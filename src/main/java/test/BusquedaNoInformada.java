@@ -1,4 +1,9 @@
-package busqueda.noinformada;
+package test;
+
+import busqueda.noinformada.BusquedaEnProfundidadVuelos;
+import busqueda.noinformada.ConexionesVuelos;
+import busqueda.noinformada.PuzzleLineal;
+import utilidades.Nodo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,12 +14,16 @@ public class BusquedaNoInformada {
     public static void main(String[] args){
 
         System.out.println("##### AMPLITUD En Puzzle Lineal #####");
-        BusquedaEnAmplitudPuzzleLineal bapl = new BusquedaEnAmplitudPuzzleLineal();
-        bapl.run("4321","1234");
+        PuzzleLineal puzzleLineal = new PuzzleLineal();
 
-        System.out.println("\n\n##### PROFUNDIDAD En Puzzle Lineal #####");
-        BusquedaEnProfundidadPuzzleLineal bppl = new BusquedaEnProfundidadPuzzleLineal();
-        bppl.run("4321","1234");
+        Nodo solucionPuzzleAmplitud = puzzleLineal.run("7654321","1234567", PuzzleLineal.AMPLITUD);
+        System.out.println("Profundidad: " + solucionPuzzleAmplitud.getProfundidad() + " camino: " + solucionPuzzleAmplitud.getCamino());
+
+
+        System.out.println("\n##### PROFUNDIDAD En Puzzle Lineal #####");
+        Nodo solucionPuzzleProfundidad = puzzleLineal.run("4321","1234", PuzzleLineal.PROFUNDIDAD);
+        System.out.println("Profundidad: " + solucionPuzzleProfundidad.getProfundidad() + " camino: " + solucionPuzzleProfundidad.getCamino());
+
 
         HashMap<String, ArrayList<String>> conexiones = new HashMap<>();
         conexiones.put("MALAGA", new ArrayList<>(Arrays.asList("SALAMANCA","MADRID","BARCELONA")));
@@ -32,7 +41,7 @@ public class BusquedaNoInformada {
         String solucion = "SANTANDER";
 
         System.out.println("\n\n##### En AMPLITUD En Conexiones Vuelo #####");
-        BusquedaEnAmplitudVuelos bav = new BusquedaEnAmplitudVuelos();
+        ConexionesVuelos bav = new ConexionesVuelos();
         bav.run(estadoInicial,solucion,conexiones);
 
         System.out.println("\n\n##### En PROFUNDIDAD En Conexiones Vuelo #####");

@@ -9,9 +9,9 @@ Algoritmos para la asignatura de IA
 ### En Amplitud
 
 * Problema de puzzle lineal
-* Problema de vuelos
+* Problema de conexión de vuelos
 
 ### En profundidad
 
 * Problema de puzzle lineal
-* Problema de vuelos
+* Problema de conexión de vuelos

@@ -6,14 +6,14 @@ import utilidades.Utils;
 import java.util.*;
 
 //Cada nivel es un transbordo
-public class BusquedaEnAmplitudVuelos {
+public class ConexionesVuelos {
 
     public void run(String estadoInicial, String solucion, HashMap<String,ArrayList<String>> conexiones){
 
         LinkedList<Nodo> nodosFrontera = new LinkedList<Nodo>();
         LinkedList<Nodo> nodosVisitados = new LinkedList<Nodo>();
 
-        Nodo raiz = new Nodo(null, null, estadoInicial);
+        Nodo raiz = new Nodo(null, estadoInicial);
         nodosFrontera.add(raiz);
         boolean solucionEncontrada = false;
         while(!nodosFrontera.isEmpty() && !solucionEncontrada){
@@ -28,14 +28,14 @@ public class BusquedaEnAmplitudVuelos {
             //expandimos: los hijos son las conexiones
             Iterator hijos = conexiones.get((String)nodoActual.getValor()).iterator();
             while(hijos.hasNext()){
-                Nodo hijo = new Nodo(null, nodoActual, (String)hijos.next());
+                Nodo hijo = new Nodo(nodoActual, (String)hijos.next());
 
                 if(Utils.esSolucion(hijo,solucion)){
                     Utils.solucionEncontrada(hijo,nodosVisitados);
                     solucionEncontrada=true;
                 }
 
-                if(!Utils.nodoPresenteEnLista(hijo,nodosFrontera) && !Utils.nodoPresenteEnLista(hijo,nodosVisitados)){
+                if(!nodosFrontera.contains(hijo) && !nodosVisitados.contains(hijo)){
                     nodosFrontera.add(hijo);
                 }
             }
