@@ -1,6 +1,5 @@
 package utilidades;
 
-import java.util.Iterator;
 import java.util.List;
 
 public class Utils {
@@ -11,9 +10,5 @@ public class Utils {
         //System.out.println("\nNodos descubiertos: " + nodosVisitados.size() + " -> " + nodosVisitados);
 
         System.out.print("Profundidad: " + nodo.getProfundidad() +" Camino: "); nodo.camino();
-    }
-
-    public static boolean esSolucion(Nodo nodoActual, String solucion) {
-        return nodoActual.getValor().equalsIgnoreCase(solucion);
     }
 }

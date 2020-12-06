@@ -1,8 +1,8 @@
 package test;
 
-import busqueda.noinformada.BusquedaEnProfundidadVuelos;
-import busqueda.noinformada.ConexionesVuelos;
-import busqueda.noinformada.PuzzleLineal;
+import busqueda.noinformada.AlgoritmoBusqueda;
+import factoria.ExploradorLineal;
+import factoria.ExploradorVuelos;
 import utilidades.Nodo;
 
 import java.util.ArrayList;
@@ -14,16 +14,24 @@ public class BusquedaNoInformada {
     public static void main(String[] args){
 
         System.out.println("##### AMPLITUD En Puzzle Lineal #####");
-        PuzzleLineal puzzleLineal = new PuzzleLineal();
+        AlgoritmoBusqueda algoritmoBusqueda = new AlgoritmoBusqueda();
 
-        Nodo solucionPuzzleAmplitud = puzzleLineal.run("7654321","1234567", PuzzleLineal.AMPLITUD);
-        System.out.println("Profundidad: " + solucionPuzzleAmplitud.getProfundidad() + " camino: " + solucionPuzzleAmplitud.getCamino());
-
+        Nodo solucionPuzzleAmplitud = algoritmoBusqueda.run(
+                "4321",
+                "1234",
+                AlgoritmoBusqueda.AMPLITUD,
+                new ExploradorLineal());
+        System.out.println("Profundidad: " + solucionPuzzleAmplitud.getProfundidad() +
+                           " camino: " + solucionPuzzleAmplitud.getCamino());
 
         System.out.println("\n##### PROFUNDIDAD En Puzzle Lineal #####");
-        Nodo solucionPuzzleProfundidad = puzzleLineal.run("4321","1234", PuzzleLineal.PROFUNDIDAD);
-        System.out.println("Profundidad: " + solucionPuzzleProfundidad.getProfundidad() + " camino: " + solucionPuzzleProfundidad.getCamino());
-
+        Nodo solucionPuzzleProfundidad = algoritmoBusqueda.run(
+                "4321",
+                "1234",
+                AlgoritmoBusqueda.PROFUNDIDAD,
+                new ExploradorLineal());
+        System.out.println("Profundidad: " + solucionPuzzleProfundidad.getProfundidad() +
+                           " camino: " + solucionPuzzleProfundidad.getCamino());
 
         HashMap<String, ArrayList<String>> conexiones = new HashMap<>();
         conexiones.put("MALAGA", new ArrayList<>(Arrays.asList("SALAMANCA","MADRID","BARCELONA")));
@@ -37,16 +45,23 @@ public class BusquedaNoInformada {
         conexiones.put("ZARAGOZA", new ArrayList<>(Arrays.asList("BARCELONA")));
         conexiones.put("BARCELONA", new ArrayList<>(Arrays.asList("ZARAGOZA","SANTIAGO","MADRID","MALAGA","VALENCIA")));
 
-        String estadoInicial= "MALAGA";
-        String solucion = "SANTANDER";
 
-        System.out.println("\n\n##### En AMPLITUD En Conexiones Vuelo #####");
-        ConexionesVuelos bav = new ConexionesVuelos();
-        bav.run(estadoInicial,solucion,conexiones);
+        System.out.println("\n##### En AMPLITUD En Conexiones Vuelo #####");
+        Nodo solucionVuelosAmplitud = algoritmoBusqueda.run(
+                "MALAGA",
+                "SANTANDER",
+                AlgoritmoBusqueda.AMPLITUD,
+                new ExploradorVuelos(conexiones));
+        System.out.println("Profundidad: " + solucionVuelosAmplitud.getProfundidad() +
+                           " camino: " + solucionVuelosAmplitud.getCamino());
 
-        System.out.println("\n\n##### En PROFUNDIDAD En Conexiones Vuelo #####");
-        BusquedaEnProfundidadVuelos bpv = new BusquedaEnProfundidadVuelos();
-        bpv.run(estadoInicial,solucion,conexiones);
-
+        System.out.println("\n##### En PROFUNDIDAD En Conexiones Vuelo #####");
+        Nodo solucionVuelosProfundidad = algoritmoBusqueda.run(
+                "MALAGA",
+                "SANTANDER",
+                AlgoritmoBusqueda.PROFUNDIDAD,
+                new ExploradorVuelos(conexiones));
+        System.out.println("Profundidad: " + solucionVuelosProfundidad.getProfundidad() +
+                           " camino: " + solucionVuelosProfundidad.getCamino());
     }
 }
