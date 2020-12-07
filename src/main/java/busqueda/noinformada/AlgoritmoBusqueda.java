@@ -8,37 +8,27 @@ import java.util.List;
 
 public class AlgoritmoBusqueda {
 
-    public static final String AMPLITUD = "amplitud";
-    public static final String PROFUNDIDAD = "profundidad";
-
     /**
      *
-     * @param datosIniciales
-     * @param sol
-     * @param method
-     * @param explorador
-     * @return
+     * @param datosIniciales    Valor del nodo raiz
+     * @param solucionFinal     Valor del nodo solucion al que llegar
+     * @param explorador        Clase con la funcion para buscar los nodos frontera de un nodo concreto
+     * @return                  El nodo solucion del que recuperar el camino
      */
-    public Nodo run(String datosIniciales, String sol, String method, IExplorador explorador) {
+    public Nodo run(String datosIniciales, String solucionFinal, IExplorador explorador) {
 
         Nodo root = new Nodo(null, datosIniciales);
-        Nodo solucion = new Nodo(null, sol);
-        LinkedList<Nodo> nodosFrontera = new LinkedList<Nodo>();
-        List<Nodo> nodosVisitados = new LinkedList<Nodo>();
+        Nodo solucion = new Nodo(null, solucionFinal);
+        LinkedList<Nodo> nodosFrontera = new LinkedList<>();
+        List<Nodo> nodosVisitados = new LinkedList<>();
 
         nodosFrontera.add(root); //En la primera iteración se utiliza el nodo raíz como frontera
         Nodo nodoActual;
 
         while (!nodosFrontera.isEmpty()) { //Procesamos la lista de nodos frontera hasta vaciarla o encontrar solucion.
 
-            if (method.equalsIgnoreCase(AMPLITUD)) {
-                nodoActual = nodosFrontera.removeFirst(); //FIFO
-            } else if (method.equalsIgnoreCase(PROFUNDIDAD)) {
-                nodoActual = nodosFrontera.removeLast(); //LIFO
-            } else {
-                System.out.println("Metodo no valido: " + method);
-                return null;
-            }
+
+            nodoActual = explorador.siguienteNodo(nodosFrontera);
 
             if(!nodosVisitados.contains(nodoActual)){ //Solamente se procesan los nodos no visitados.
 

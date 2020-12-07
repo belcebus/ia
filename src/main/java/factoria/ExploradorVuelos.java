@@ -10,8 +10,10 @@ import java.util.LinkedList;
 public class ExploradorVuelos implements IExplorador {
 
     private HashMap<String, ArrayList<String>> conexiones;
+    private String metodoExploracion;
 
-    public ExploradorVuelos(HashMap<String, ArrayList<String>> conexiones) {
+    public ExploradorVuelos(String metodoExploracion,HashMap<String, ArrayList<String>> conexiones) {
+        this.metodoExploracion = metodoExploracion;
         this.conexiones = conexiones;
     }
 
@@ -26,5 +28,18 @@ public class ExploradorVuelos implements IExplorador {
         }
 
         return listaNodosHijo;
+    }
+
+    @Override
+    public Nodo siguienteNodo(LinkedList<Nodo> nodosFrontera) {
+
+        if (this.metodoExploracion.equalsIgnoreCase(IExplorador.AMPLITUD)) {
+            return nodosFrontera.removeFirst(); //FIFO
+        } else if (this.metodoExploracion.equalsIgnoreCase(PROFUNDIDAD)) {
+            return nodosFrontera.removeLast(); //LIFO
+        } else {
+            System.out.println("Metodo no valido: " + this.metodoExploracion);
+            return null;
+        }
     }
 }

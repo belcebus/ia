@@ -26,35 +26,28 @@ public class Nodo {
         this.padre = padre;
     }
 
-    public String toString(){
-        String res=this.getValor().toString();
-        return  res;
+    public String toString() {
+        return this.getValor();
     }
 
-    public int getProfundidad(){
-        while(getPadre()!=null){
+    public int getProfundidad() {
+        if (getPadre() != null) {
             return getPadre().getProfundidad() + 1;
         }
         return 0;
     }
-    public void camino(){
-        if(getPadre()!=null){
-            getPadre().camino();
-        }
-        System.out.print(getValor() + " ");
-    }
 
-    public String getCamino(){
+    public String getCamino() {
 
-        if(getPadre()!=null){
-            return getPadre().getCamino() +" "+ getValor();
+        if (getPadre() != null) {
+            return getPadre().getCamino() + " " + getValor();
         }
         return getValor();
     }
 
-    public boolean equals(Object obj){
-        if(obj instanceof Nodo) {
-            return ((Nodo)obj).getValor().equalsIgnoreCase(getValor());
+    public boolean equals(Object obj) {
+        if (obj instanceof Nodo) {
+            return ((Nodo) obj).getValor().equalsIgnoreCase(getValor());
         }
         return false;
     }
