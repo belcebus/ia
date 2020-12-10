@@ -6,12 +6,20 @@ Algoritmos para la asignatura de IA
 
 ## Búsqueda no informada
 
-### En Amplitud
+[Detalles](src/main/java/busqueda/noinformada/algoritmobusqueda.md)
 
-* Problema de puzzle lineal
-* Problema de conexión de vuelos
-
-### En profundidad
-
-* Problema de puzzle lineal
-* Problema de conexión de vuelos
+* En amplitud
+  * Problema de puzzle lineal
+  * Problema de conexión de vuelos
+* En profundidad
+    * Problema de puzzle lineal
+    * Problema de conexión de vuelos
+* En profundidad mejorada (limitada)
+    * Problema de puzzle lineal
+    * Problema de conexión de vuelos
+* En profundidad mejorada (iterativa)
+    * Problema de puzzle lineal
+    * Problema de conexión de vuelos
+* Búsqueda de coste uniforme
+    * Problema de puzzle lineal
+    * Problema de conexión de vuelos
