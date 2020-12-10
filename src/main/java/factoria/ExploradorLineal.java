@@ -6,12 +6,17 @@ import java.util.LinkedList;
 
 public class ExploradorLineal implements IExplorador {
 
-    String metodoExploracion ;
+    private String metodoExploracion ;
+    private int limiteProfundidad;
 
     public ExploradorLineal(String metodoExploracion) {
         this.metodoExploracion = metodoExploracion;
     }
 
+    public ExploradorLineal(String metodoExploracion,int limiteProfundidad){
+        this.metodoExploracion = metodoExploracion;
+        this.limiteProfundidad = limiteProfundidad;
+    }
     @Override
     public LinkedList explorarFrontera(Nodo nodo) {
         LinkedList<Nodo> listaNodosHijos = new LinkedList<Nodo>();
@@ -33,8 +38,15 @@ public class ExploradorLineal implements IExplorador {
             return nodosFrontera.removeFirst(); //FIFO
         } else if (this.metodoExploracion.equalsIgnoreCase(PROFUNDIDAD)) {
              return nodosFrontera.removeLast(); //LIFO
+        } else if (this.metodoExploracion.equalsIgnoreCase(PROFUNDIDAD_LIMITADA)){
+            Nodo aux = nodosFrontera.removeLast(); //LIFO
+            if(aux.getProfundidad()>limiteProfundidad){
+                return null;
+            }else{
+                return aux;
+            }
         } else {
-            System.out.println("Metodo no valido: " + this.metodoExploracion);
+            System.out.println("Método no valido: " + this.metodoExploracion);
             return null;
         }
     }
