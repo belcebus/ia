@@ -1,15 +1,12 @@
 package test;
 
 import busqueda.noinformada.AlgoritmoBusqueda;
-import factoria.ExploradorLineal;
-import factoria.ExploradorVuelos;
-import factoria.IExplorador;
-import utilidades.Nodo;
+import utilidades.exploradores.ExploradorLineal;
+import utilidades.exploradores.ExploradorViajante;
+import utilidades.exploradores.ExploradorVuelos;
+import utilidades.exploradores.IExplorador;
+import utilidades.GeneradorConexiones;
 import utilidades.Solucion;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 
 public class BusquedaNoInformada {
 
@@ -22,10 +19,14 @@ public class BusquedaNoInformada {
                 "\n* Camino: Ruta desde la raiz a la solución" +
                 "\n* Tiempo: Tiempo empleado en el algoritmo");
 
+        /*
+            PROBLEMA DEL PUZZLE LINEAL
+         */
+
         AlgoritmoBusqueda algoritmoBusqueda = new AlgoritmoBusqueda();
         String datosIniciales="7654321";
         String solucionFinal ="1234567";
-        int limiteProfundidad=2;
+        int limiteProfundidad=100;
         long tiempoComienzo;
         long tiempoFinal;
 
@@ -69,25 +70,20 @@ public class BusquedaNoInformada {
                             "\nExplorados:  " + solucionPuzzleProfundidadLimitada.getNodosExplorados() +
                             "\nTiempo:      " + tiempoFinal + " ms");
 
-        HashMap<String, ArrayList<String>> conexiones = new HashMap<>();
-        conexiones.put("MALAGA", new ArrayList<>(Arrays.asList("SALAMANCA","MADRID","BARCELONA")));
-        conexiones.put("SEVILLA", new ArrayList<>(Arrays.asList("SANTIAGO","MADRID")));
-        conexiones.put("GRANADA", new ArrayList<>(Arrays.asList("VALENCIA")));
-        conexiones.put("VALENCIA", new ArrayList<>(Arrays.asList("BARCELONA")));
-        conexiones.put("MADRID", new ArrayList<>(Arrays.asList("SALAMANCA","SEVILLA","MALAGA","BARCELONA","SANTANDER")));
-        conexiones.put("SALAMANCA", new ArrayList<>(Arrays.asList("MALAGA","MADRID")));
-        conexiones.put("SANTIAGO", new ArrayList<>(Arrays.asList("SEVILLA","SANTANDER","BARCELONA")));
-        conexiones.put("SANTANDER", new ArrayList<>(Arrays.asList("SANTIAGO","MADRID")));
-        conexiones.put("ZARAGOZA", new ArrayList<>(Arrays.asList("BARCELONA")));
-        conexiones.put("BARCELONA", new ArrayList<>(Arrays.asList("ZARAGOZA","SANTIAGO","MADRID","MALAGA","VALENCIA")));
+        /*
+            PROBLEMA CONEXIONES O TRANSBORDOS EN VUELOS
+         */
 
+        String ciudadOrigen="MALAGA";
+        String ciudadDestino="SANTIAGO";
+        int limiteProfundidadVuelos=3;
 
         System.out.println("\n_-_- Conexiones vuelo en amplitud -_-_");
         tiempoComienzo = System.currentTimeMillis();
         Solucion solucionVuelosAmplitud = algoritmoBusqueda.run(
-                "MALAGA",
-                "SANTANDER",
-                new ExploradorVuelos(IExplorador.AMPLITUD, conexiones));
+                ciudadOrigen,
+                ciudadDestino,
+                new ExploradorVuelos(IExplorador.AMPLITUD, GeneradorConexiones.getConexionesVuelos()));
         tiempoFinal = System.currentTimeMillis() - tiempoComienzo;
         System.out.println("Profundidad: " + solucionVuelosAmplitud.getProfundidad() +
                             "\nCamino:      " + solucionVuelosAmplitud.getCamino()+
@@ -98,9 +94,9 @@ public class BusquedaNoInformada {
         System.out.println("\n_-_- Conexiones vuelo en profundidad -_-_");
         tiempoComienzo = System.currentTimeMillis();
         Solucion solucionVuelosProfundidad = algoritmoBusqueda.run(
-                "MALAGA",
-                "SANTANDER",
-                new ExploradorVuelos(IExplorador.PROFUNDIDAD, conexiones));
+                ciudadOrigen,
+                ciudadDestino,
+                new ExploradorVuelos(IExplorador.PROFUNDIDAD, GeneradorConexiones.getConexionesVuelos()));
         tiempoFinal = System.currentTimeMillis() - tiempoComienzo;
         System.out.println("Profundidad: " + solucionVuelosProfundidad.getProfundidad() +
                             "\nCamino:      " + solucionVuelosProfundidad.getCamino() +
@@ -108,17 +104,40 @@ public class BusquedaNoInformada {
                             "\nExplorados:  " + solucionVuelosProfundidad.getNodosExplorados() +
                             "\nTiempo:      " + tiempoFinal + " ms");
 
-        System.out.println("\n_-_- Conexiones vuelo en profundidad limitada-_-_");
+        System.out.println("\n_-_- Conexiones vuelo en profundidad limitada -_-_");
         tiempoComienzo = System.currentTimeMillis();
         Solucion solucionVuelosProfundidadLimitada = algoritmoBusqueda.run(
-                "MALAGA",
-                "SANTANDER",
-                new ExploradorVuelos(IExplorador.PROFUNDIDAD_LIMITADA, conexiones, limiteProfundidad));
+                ciudadOrigen,
+                ciudadDestino,
+                new ExploradorVuelos(IExplorador.PROFUNDIDAD_LIMITADA, GeneradorConexiones.getConexionesVuelos(), limiteProfundidadVuelos));
         tiempoFinal = System.currentTimeMillis() - tiempoComienzo;
         System.out.println("Profundidad: " + solucionVuelosProfundidadLimitada.getProfundidad() +
                             "\nCamino:      " + solucionVuelosProfundidadLimitada.getCamino() +
                             "\nVisitados:   " + solucionVuelosProfundidadLimitada.getNodosVisitados() +
                             "\nExplorados:  " + solucionVuelosProfundidadLimitada.getNodosExplorados() +
                             "\nTiempo:      " + tiempoFinal + " ms");
+
+        /*
+            PROBLEMA DEL VIAJANTE DE COMERCIO: TRAVEL SALESMAN PROBLEM (TPS)
+         */
+
+
+        String ciudadOrigenViajante="BARCELONA";
+        String ciudadDestinoViajante="SALAMANCA";
+
+        System.out.println("\n_-_- Viajante en coste uniforme -_-_");
+        tiempoComienzo = System.currentTimeMillis();
+        Solucion solucionViajanteCosteUniforme = algoritmoBusqueda.run(
+                ciudadOrigenViajante,
+                ciudadDestinoViajante,
+                new ExploradorViajante(IExplorador.COSTE_UNIFORME, GeneradorConexiones.getConexionesViajante()));
+        tiempoFinal = System.currentTimeMillis() - tiempoComienzo;
+        System.out.println("Profundidad: " + solucionViajanteCosteUniforme.getProfundidad() +
+                "\nCoste        " + solucionViajanteCosteUniforme.getCoste() +
+                "\nCamino:      " + solucionViajanteCosteUniforme.getCamino() +
+                "\nVisitados:   " + solucionViajanteCosteUniforme.getNodosVisitados() +
+                "\nExplorados:  " + solucionViajanteCosteUniforme.getNodosExplorados() +
+                "\nTiempo:      " + tiempoFinal + " ms");
     }
+
 }

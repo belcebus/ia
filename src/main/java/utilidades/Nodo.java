@@ -4,11 +4,22 @@ public class Nodo {
 
     private Nodo padre;
     private String valor;
+    private int coste;
 
     public Nodo(Nodo padre, String valor) {
         this.padre = padre;
         this.valor = valor;
     }
+
+    public Nodo(Nodo padre, String valor, int coste) {
+        this.padre = padre;
+        this.valor = valor;
+        this.coste = coste;
+    }
+
+    public int getCoste() { return coste; }
+
+    public void setCoste(int coste) { this.coste = coste; }
 
     public String getValor() {
         return valor;
@@ -43,6 +54,14 @@ public class Nodo {
             return getPadre().getCamino() + " " + getValor();
         }
         return getValor();
+    }
+
+    public int getCosteCamino(){
+
+        if(getPadre()!=null){
+            return getPadre().getCosteCamino() + getCoste();
+        }
+        return 0;
     }
 
     public boolean equals(Object obj) {

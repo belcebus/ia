@@ -64,3 +64,8 @@ Para convertir el algoritmo de búsqueda no informada en óptimo, podemos partir
 la limitación de niveles anterior pero incrementando el nivel por cada ejecución.
 
 ### Búsqueda de coste uniforme
+
+El algoritmo de búsqueda no informada con coste uniforme, realiza una exploración 
+del árbol de soluciones mediante la extracción de los nodos de la frontera 
+como una cola con prioridades, en la que cada vez se va extrayendo el nodo con 
+menor coste. El coste debe ir actualizándose en la lista de nodos frontera.

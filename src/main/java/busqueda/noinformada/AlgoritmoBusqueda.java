@@ -1,6 +1,6 @@
 package busqueda.noinformada;
 
-import factoria.IExplorador;
+import utilidades.exploradores.IExplorador;
 import utilidades.Nodo;
 import utilidades.Solucion;
 
@@ -47,7 +47,6 @@ public class AlgoritmoBusqueda {
                 nuevaFrontera = explorador.explorarFrontera(nodoActual); //Calculo de la nueva frontera.
                 nodosExplorados += nuevaFrontera.size();
                 nodosFrontera.addAll(nuevaFrontera);
-
             }
         }
         return null;

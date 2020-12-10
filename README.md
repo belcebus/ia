@@ -9,8 +9,8 @@ Algoritmos para la asignatura de IA
 [Detalles](src/main/java/busqueda/noinformada/algoritmobusqueda.md)
 
 * En amplitud
-  * Problema de puzzle lineal
-  * Problema de conexión de vuelos
+    * Problema de puzzle lineal
+    * Problema de conexión de vuelos
 * En profundidad
     * Problema de puzzle lineal
     * Problema de conexión de vuelos
@@ -23,3 +23,4 @@ Algoritmos para la asignatura de IA
 * Búsqueda de coste uniforme
     * Problema de puzzle lineal
     * Problema de conexión de vuelos
+    * Problema del viajante de comercio (Travel Salesman Problem)

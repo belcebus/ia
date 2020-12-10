@@ -34,4 +34,11 @@ public class Solucion {
             return "";
         }
     }
+    public int getCoste(){
+        if(nodoSolucion!=null){
+            return nodoSolucion.getCoste();
+        }else{
+            return -1;
+        }
+    }
 }

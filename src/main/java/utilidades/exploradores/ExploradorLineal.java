@@ -1,4 +1,4 @@
-package factoria;
+package utilidades.exploradores;
 
 import utilidades.Nodo;
 
