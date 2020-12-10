@@ -11,10 +11,17 @@ public class ExploradorVuelos implements IExplorador {
 
     private HashMap<String, ArrayList<String>> conexiones;
     private String metodoExploracion;
+    private int limiteProfundidad;
 
     public ExploradorVuelos(String metodoExploracion,HashMap<String, ArrayList<String>> conexiones) {
         this.metodoExploracion = metodoExploracion;
         this.conexiones = conexiones;
+    }
+
+    public ExploradorVuelos(String metodoExploracion, HashMap<String, ArrayList<String>> conexiones, int limiteProfundidad) {
+        this.conexiones = conexiones;
+        this.metodoExploracion = metodoExploracion;
+        this.limiteProfundidad = limiteProfundidad;
     }
 
     @Override
@@ -37,7 +44,14 @@ public class ExploradorVuelos implements IExplorador {
             return nodosFrontera.removeFirst(); //FIFO
         } else if (this.metodoExploracion.equalsIgnoreCase(PROFUNDIDAD)) {
             return nodosFrontera.removeLast(); //LIFO
-        } else {
+        } else if(this.metodoExploracion.equalsIgnoreCase(PROFUNDIDAD_LIMITADA)){
+            Nodo aux = nodosFrontera.removeLast(); //LIFO
+            if(aux.getProfundidad()>limiteProfundidad){
+                return null;
+            }else{
+                return aux;
+            }
+        }else {
             System.out.println("Metodo no valido: " + this.metodoExploracion);
             return null;
         }

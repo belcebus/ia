@@ -25,7 +25,7 @@ public class BusquedaNoInformada {
         AlgoritmoBusqueda algoritmoBusqueda = new AlgoritmoBusqueda();
         String datosIniciales="7654321";
         String solucionFinal ="1234567";
-        int limiteProfundidad=100;
+        int limiteProfundidad=2;
         long tiempoComienzo;
         long tiempoFinal;
 
@@ -106,6 +106,19 @@ public class BusquedaNoInformada {
                             "\nCamino:      " + solucionVuelosProfundidad.getCamino() +
                             "\nVisitados:   " + solucionVuelosProfundidad.getNodosVisitados() +
                             "\nExplorados:  " + solucionVuelosProfundidad.getNodosExplorados() +
+                            "\nTiempo:      " + tiempoFinal + " ms");
+
+        System.out.println("\n_-_- Conexiones vuelo en profundidad limitada-_-_");
+        tiempoComienzo = System.currentTimeMillis();
+        Solucion solucionVuelosProfundidadLimitada = algoritmoBusqueda.run(
+                "MALAGA",
+                "SANTANDER",
+                new ExploradorVuelos(IExplorador.PROFUNDIDAD_LIMITADA, conexiones, limiteProfundidad));
+        tiempoFinal = System.currentTimeMillis() - tiempoComienzo;
+        System.out.println("Profundidad: " + solucionVuelosProfundidadLimitada.getProfundidad() +
+                            "\nCamino:      " + solucionVuelosProfundidadLimitada.getCamino() +
+                            "\nVisitados:   " + solucionVuelosProfundidadLimitada.getNodosVisitados() +
+                            "\nExplorados:  " + solucionVuelosProfundidadLimitada.getNodosExplorados() +
                             "\nTiempo:      " + tiempoFinal + " ms");
     }
 }
