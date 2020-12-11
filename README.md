@@ -18,9 +18,5 @@ Algoritmos para la asignatura de IA
     * Problema de puzzle lineal
     * Problema de conexión de vuelos
 * En profundidad mejorada (iterativa)
-    * Problema de puzzle lineal
-    * Problema de conexión de vuelos
 * Búsqueda de coste uniforme
-    * Problema de puzzle lineal
-    * Problema de conexión de vuelos
     * Problema del viajante de comercio (Travel Salesman Problem)

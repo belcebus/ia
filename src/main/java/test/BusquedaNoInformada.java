@@ -78,7 +78,7 @@ public class BusquedaNoInformada {
         String ciudadDestino="SANTIAGO";
         int limiteProfundidadVuelos=3;
 
-        System.out.println("\n_-_- Conexiones vuelo en amplitud -_-_");
+        System.out.println("\n_-_- Conexiones vuelo en amplitud ["+ciudadOrigen+"->"+ciudadDestino+"] -_-_");
         tiempoComienzo = System.currentTimeMillis();
         Solucion solucionVuelosAmplitud = algoritmoBusqueda.run(
                 ciudadOrigen,
@@ -91,7 +91,7 @@ public class BusquedaNoInformada {
                             "\nExplorados:  " + solucionVuelosAmplitud.getNodosExplorados() +
                             "\nTiempo:      " + tiempoFinal + " ms");
 
-        System.out.println("\n_-_- Conexiones vuelo en profundidad -_-_");
+        System.out.println("\n_-_- Conexiones vuelo en profundidad ["+ciudadOrigen+"->"+ciudadDestino+"] -_-_");
         tiempoComienzo = System.currentTimeMillis();
         Solucion solucionVuelosProfundidad = algoritmoBusqueda.run(
                 ciudadOrigen,
@@ -104,7 +104,7 @@ public class BusquedaNoInformada {
                             "\nExplorados:  " + solucionVuelosProfundidad.getNodosExplorados() +
                             "\nTiempo:      " + tiempoFinal + " ms");
 
-        System.out.println("\n_-_- Conexiones vuelo en profundidad limitada -_-_");
+        System.out.println("\n_-_- Conexiones vuelo en profundidad limitada ["+ciudadOrigen+"->"+ciudadDestino+"] -_-_");
         tiempoComienzo = System.currentTimeMillis();
         Solucion solucionVuelosProfundidadLimitada = algoritmoBusqueda.run(
                 ciudadOrigen,
@@ -122,10 +122,10 @@ public class BusquedaNoInformada {
          */
 
 
-        String ciudadOrigenViajante="BARCELONA";
-        String ciudadDestinoViajante="SALAMANCA";
+        String ciudadOrigenViajante="SEVILLA";
+        String ciudadDestinoViajante="SANTIAGO";
 
-        System.out.println("\n_-_- Viajante en coste uniforme -_-_");
+        System.out.println("\n_-_- Viajante en coste uniforme ["+ciudadOrigenViajante+"->"+ciudadDestinoViajante+"] -_-_");
         tiempoComienzo = System.currentTimeMillis();
         Solucion solucionViajanteCosteUniforme = algoritmoBusqueda.run(
                 ciudadOrigenViajante,
