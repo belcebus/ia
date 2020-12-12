@@ -6,6 +6,11 @@ import algoritmo.busqueda.noinformada.AlgoritmoBusquedaNoInformada;
 import org.apache.commons.cli.*;
 import utilidades.Solucion;
 import utilidades.exploradores.FactoriaExploradores;
+import utilidades.exploradores.IExplorador;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 public class CommandLineRunner {
 
@@ -18,7 +23,7 @@ public class CommandLineRunner {
         commandLineOptions.addOption("t", "tipo", true,
                 "Tipo de algoritmo. [noinformada]");
         commandLineOptions.addOption("v", "variacion", true,
-                "Variación del algoritmo. [amplitud | profundidad | limitada | costeunitario");
+                "Variación del algoritmo. [amplitud | profundidad | profundidadlimitada | costeunitario");
         commandLineOptions.addOption("p", "problema", true,
                 "Tipo de problema a solucionar con el algoritmo seleccionada [puzzle | conexiones | viajante]");
         commandLineOptions.addOption("i", "inicio", true,
@@ -26,9 +31,14 @@ public class CommandLineRunner {
         commandLineOptions.addOption("s", "solucion", true,
                 "Solución buscada. Dependiente del problema");
 
+
         //opcionales o dependientes
-        //commandLineOptions.addOption("l", "limite",true, "limite de niveles en caso de una variación con limite de profundidad");
+        commandLineOptions.addOption("l", "limite",true,
+                "limite de niveles en caso de una variación con limite de profundidad");
         //commandLineOptions.addOption("c", "conexiones",true, "fichero de conexiones");
+
+        List<String> obligatorios = Arrays.asList("a","t","v","p","i","s");
+        List<String> opcionales = Arrays.asList("l");
 
         HelpFormatter formatter = new HelpFormatter();
         CommandLineParser parser = new DefaultParser();
@@ -37,7 +47,7 @@ public class CommandLineRunner {
             // Validar el número de parámetros obligatorios
             CommandLine cmd = parser.parse(commandLineOptions, args, false);
 
-            if (cmd.getOptions().length != commandLineOptions.getOptions().size()) { //todas los parametros obligatorios
+            if (cmd.getOptions().length < obligatorios.size()) { //todas los parametros obligatorios
                 String uso = "java -jar algoritmos.jar opciones";
                 String ejemplo = "ejemplo: java -jar algoritmo.jar " +
                         "--algoritmo busqueda " +
@@ -58,6 +68,14 @@ public class CommandLineRunner {
             String problema = cmd.getOptionValue("p");
             String inicio = cmd.getOptionValue("i");
             String solucion = cmd.getOptionValue("s");
+            String limite = cmd.getOptionValue("l");
+
+            if(variacionAlgoritmo.equalsIgnoreCase(IExplorador.PROFUNDIDAD_LIMITADA) && limite == null ||
+            limite!=null && !variacionAlgoritmo.equalsIgnoreCase(IExplorador.PROFUNDIDAD_LIMITADA)){
+                throw new ParseException("Parámetro \"l\" obligatorio para variación de algoritmo "
+                        + IExplorador.PROFUNDIDAD_LIMITADA + " o si se ha especificado el parámetro \"l\" " +
+                        "la variacion no es " + IExplorador.PROFUNDIDAD_LIMITADA + " " + variacionAlgoritmo);
+            }
 
             for (Option o : cmd.getOptions()) {
                 System.out.println(o.getLongOpt() + ": " + cmd.getOptionValue(o.getOpt()));
@@ -67,7 +85,7 @@ public class CommandLineRunner {
             if (algoritmo.equalsIgnoreCase(IAlgoritmo.BUSQUEDA)) {
                 if (tipoAlgoritmo.equalsIgnoreCase(IBusqueda.NO_INFORMADA)) {
                     AlgoritmoBusquedaNoInformada abni = new AlgoritmoBusquedaNoInformada();
-                    FactoriaExploradores factoria = new FactoriaExploradores(problema, variacionAlgoritmo);
+                    FactoriaExploradores factoria = new FactoriaExploradores(problema, variacionAlgoritmo,limite);
                     sol = abni.run(inicio, solucion, factoria.crearExplorador());
                 } else {
                     System.out.println("Tipo de algoritmo no implementado para " + algoritmo + ": " + tipoAlgoritmo);
