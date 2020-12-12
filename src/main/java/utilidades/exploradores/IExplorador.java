@@ -8,8 +8,8 @@ public interface IExplorador {
 
     String AMPLITUD = "amplitud";
     String PROFUNDIDAD = "profundidad";
-    String PROFUNDIDAD_LIMITADA = "profundidad_limitada";
-    String COSTE_UNIFORME = "coste_uniforme";
+    String PROFUNDIDAD_LIMITADA = "profundidadlimitada";
+    String COSTE_UNIFORME = "costeuniforme";
 
     LinkedList<Nodo> explorarFrontera(Nodo nodo);
 

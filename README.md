@@ -6,7 +6,7 @@ Algoritmos para la asignatura de IA
 
 ## Búsqueda no informada
 
-[Detalles](src/main/java/busqueda/noinformada/algoritmobusqueda.md)
+[Detalles](src/main/java/algoritmo/busqueda/noinformada/algoritmobusqueda.md)
 
 * En amplitud
     * Problema de puzzle lineal

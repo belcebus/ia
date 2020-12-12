@@ -1,5 +1,6 @@
-package busqueda.noinformada;
+package algoritmo.busqueda.noinformada;
 
+import algoritmo.busqueda.IBusqueda;
 import utilidades.exploradores.IExplorador;
 import utilidades.Nodo;
 import utilidades.Solucion;
@@ -7,7 +8,7 @@ import utilidades.Solucion;
 import java.util.LinkedList;
 import java.util.List;
 
-public class AlgoritmoBusqueda {
+public class AlgoritmoBusquedaNoInformada implements IBusqueda {
 
     /**
      *

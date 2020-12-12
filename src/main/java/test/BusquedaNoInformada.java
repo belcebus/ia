@@ -1,6 +1,6 @@
 package test;
 
-import busqueda.noinformada.AlgoritmoBusqueda;
+import algoritmo.busqueda.noinformada.AlgoritmoBusquedaNoInformada;
 import utilidades.exploradores.ExploradorLineal;
 import utilidades.exploradores.ExploradorConexiones;
 import utilidades.exploradores.IExplorador;
@@ -22,7 +22,7 @@ public class BusquedaNoInformada {
             PROBLEMA DEL PUZZLE LINEAL
          */
 
-        AlgoritmoBusqueda algoritmoBusqueda = new AlgoritmoBusqueda();
+        AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
         String datosIniciales="7654321";
         String solucionFinal ="1234567";
         int limiteProfundidad=100;
@@ -31,7 +31,7 @@ public class BusquedaNoInformada {
 
         System.out.println("\n_-_- Puzzle lineal exploración en amplitud [" + datosIniciales + "->"+ solucionFinal + "] -_-_");
         tiempoComienzo = System.currentTimeMillis();
-        Solucion solucionPuzzleAmplitud = algoritmoBusqueda.run(
+        Solucion solucionPuzzleAmplitud = algoritmoBusquedaNoInformada.run(
                 datosIniciales,
                 solucionFinal,
                 new ExploradorLineal(IExplorador.AMPLITUD));
@@ -40,7 +40,7 @@ public class BusquedaNoInformada {
 
         System.out.println("\n_-_- Puzzle lineal exploración en profundidad [" + datosIniciales + "->"+ solucionFinal + "] -_-_");
         tiempoComienzo = System.currentTimeMillis();
-        Solucion solucionPuzzleProfundidad = algoritmoBusqueda.run(
+        Solucion solucionPuzzleProfundidad = algoritmoBusquedaNoInformada.run(
                 datosIniciales,
                 solucionFinal,
                 new ExploradorLineal(IExplorador.PROFUNDIDAD));
@@ -50,7 +50,7 @@ public class BusquedaNoInformada {
         System.out.println("\n_-_- Puzzle lineal exploración en profundidad limitada [" + datosIniciales + "->"+ solucionFinal
                 + " | Limite Profundidad: "+ limiteProfundidad + "] -_-_");
         tiempoComienzo = System.currentTimeMillis();
-        Solucion solucionPuzzleProfundidadLimitada = algoritmoBusqueda.run(
+        Solucion solucionPuzzleProfundidadLimitada = algoritmoBusquedaNoInformada.run(
                 datosIniciales,
                 solucionFinal,
                 new ExploradorLineal(IExplorador.PROFUNDIDAD_LIMITADA,limiteProfundidad));
@@ -67,7 +67,7 @@ public class BusquedaNoInformada {
 
         System.out.println("\n_-_- Conexiones vuelo en amplitud ["+ciudadOrigen+"->"+ciudadDestino+"] -_-_");
         tiempoComienzo = System.currentTimeMillis();
-        Solucion solucionVuelosAmplitud = algoritmoBusqueda.run(
+        Solucion solucionVuelosAmplitud = algoritmoBusquedaNoInformada.run(
                 ciudadOrigen,
                 ciudadDestino,
                 new ExploradorConexiones(IExplorador.AMPLITUD, GeneradorConexiones.getConexionesVuelos()));
@@ -76,7 +76,7 @@ public class BusquedaNoInformada {
 
         System.out.println("\n_-_- Conexiones vuelo en profundidad ["+ciudadOrigen+"->"+ciudadDestino+"] -_-_");
         tiempoComienzo = System.currentTimeMillis();
-        Solucion solucionVuelosProfundidad = algoritmoBusqueda.run(
+        Solucion solucionVuelosProfundidad = algoritmoBusquedaNoInformada.run(
                 ciudadOrigen,
                 ciudadDestino,
                 new ExploradorConexiones(IExplorador.PROFUNDIDAD, GeneradorConexiones.getConexionesVuelos()));
@@ -85,7 +85,7 @@ public class BusquedaNoInformada {
 
         System.out.println("\n_-_- Conexiones vuelo en profundidad limitada ["+ciudadOrigen+"->"+ciudadDestino+"] -_-_");
         tiempoComienzo = System.currentTimeMillis();
-        Solucion solucionVuelosProfundidadLimitada = algoritmoBusqueda.run(
+        Solucion solucionVuelosProfundidadLimitada = algoritmoBusquedaNoInformada.run(
                 ciudadOrigen,
                 ciudadDestino,
                 new ExploradorConexiones(IExplorador.PROFUNDIDAD_LIMITADA, GeneradorConexiones.getConexionesVuelos(), limiteProfundidadVuelos));
@@ -100,7 +100,7 @@ public class BusquedaNoInformada {
 
         System.out.println("\n_-_- Viajante en coste uniforme ["+ciudadOrigenViajante+"->"+ciudadDestinoViajante+"] -_-_");
         tiempoComienzo = System.currentTimeMillis();
-        Solucion solucionViajanteCosteUniforme = algoritmoBusqueda.run(
+        Solucion solucionViajanteCosteUniforme = algoritmoBusquedaNoInformada.run(
                 ciudadOrigenViajante,
                 ciudadDestinoViajante,
                 new ExploradorConexiones(IExplorador.COSTE_UNIFORME, GeneradorConexiones.getConexionesViajante()));
@@ -110,7 +110,7 @@ public class BusquedaNoInformada {
 
         System.out.println("\n_-_- Viajante en amplitud ["+ciudadOrigenViajante+"->"+ciudadDestinoViajante+"] -_-_");
         tiempoComienzo = System.currentTimeMillis();
-        Solucion solucionViajanteAmplitud = algoritmoBusqueda.run(
+        Solucion solucionViajanteAmplitud = algoritmoBusquedaNoInformada.run(
                 ciudadOrigenViajante,
                 ciudadDestinoViajante,
                 new ExploradorConexiones(IExplorador.AMPLITUD, GeneradorConexiones.getConexionesViajante()));
@@ -119,7 +119,7 @@ public class BusquedaNoInformada {
 
         System.out.println("\n_-_- Viajante en profundidad ["+ciudadOrigenViajante+"->"+ciudadDestinoViajante+"] -_-_");
         tiempoComienzo = System.currentTimeMillis();
-        Solucion solucionViajanteProfundidad = algoritmoBusqueda.run(
+        Solucion solucionViajanteProfundidad = algoritmoBusquedaNoInformada.run(
                 ciudadOrigenViajante,
                 ciudadDestinoViajante,
                 new ExploradorConexiones(IExplorador.PROFUNDIDAD, GeneradorConexiones.getConexionesViajante()));

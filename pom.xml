@@ -25,7 +25,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>run.Run</mainClass>
+                            <mainClass>run.CommandLineRunner</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
