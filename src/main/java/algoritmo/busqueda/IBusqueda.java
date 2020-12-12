@@ -5,9 +5,9 @@ import utilidades.exploradores.IExplorador;
 
 public interface IBusqueda {
 
-    public static final String INFORMADA = "informada";
-    public static final String NO_INFORMADA = "noinformada";
+    String INFORMADA = "informada";
+    String NO_INFORMADA = "noinformada";
 
-    public Solucion run(String datosIniciales, String solucionFinal, IExplorador explorador);
+    Solucion run(String datosIniciales, String solucionFinal, IExplorador explorador);
 
 }
