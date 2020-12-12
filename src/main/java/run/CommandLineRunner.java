@@ -3,7 +3,9 @@ package run;
 import algoritmo.IAlgoritmo;
 import algoritmo.busqueda.IBusqueda;
 import algoritmo.busqueda.noinformada.AlgoritmoBusquedaNoInformada;
+import algoritmo.busqueda.noinformada.IProblema;
 import org.apache.commons.cli.*;
+import utilidades.Coordenada;
 import utilidades.Solucion;
 import utilidades.exploradores.FactoriaExploradores;
 import utilidades.exploradores.IExplorador;
@@ -85,7 +87,17 @@ public class CommandLineRunner {
                 if (tipoAlgoritmo.equalsIgnoreCase(IBusqueda.NO_INFORMADA)) {
                     AlgoritmoBusquedaNoInformada abni = new AlgoritmoBusquedaNoInformada();
                     FactoriaExploradores factoria = new FactoriaExploradores(problema, variacionAlgoritmo,limite);
-                    sol = abni.run(inicio, solucion, factoria.crearExplorador());
+
+                    if(problema.equalsIgnoreCase(IProblema.BUSQUEDA_Y_RESCATE)){
+                        //transformar la entrada en coordendadas
+                        Coordenada coordenadaInicio = new Coordenada(inicio);
+                        Coordenada coordenadaSolucion = new Coordenada(solucion);
+                        sol = abni.run(coordenadaInicio, coordenadaSolucion, factoria.crearExplorador());
+
+                    }else{
+                        sol = abni.run(inicio, solucion, factoria.crearExplorador());
+                    }
+
                 } else {
                     System.out.println("Tipo de algoritmo no implementado para " + algoritmo + ": " + tipoAlgoritmo);
                 }

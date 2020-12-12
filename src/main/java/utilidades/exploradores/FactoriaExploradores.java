@@ -30,8 +30,9 @@ public class FactoriaExploradores {
             return new ExploradorConexiones(variacion, GeneradorConexiones.getConexionesVuelos(),limiteProfundidad);
         }else if(problema.equalsIgnoreCase(IProblema.VIAJANTE)){
             return new ExploradorConexiones(variacion, GeneradorConexiones.getConexionesViajante(),limiteProfundidad);
+        }else if(problema.equalsIgnoreCase(IProblema.BUSQUEDA_Y_RESCATE)){
+            return new ExploradorBusquedaRescate(variacion,limiteProfundidad);
         }else{
-
             System.out.println("Variación:" + variacion + " o problema:" + problema + " no implementado");
         }
 

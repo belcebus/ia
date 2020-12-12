@@ -3,10 +3,10 @@ package utilidades;
 public class Nodo {
 
     private Nodo padre;
-    private String valor;
+    private Object valor;
     private int coste;
 
-    public Nodo(Nodo padre, String valor) {
+    public Nodo(Nodo padre, Object valor) {
         this.padre = padre;
         this.valor = valor;
     }
@@ -21,11 +21,13 @@ public class Nodo {
 
     public void setCoste(int coste) { this.coste = coste; }
 
-    public String getValor() {
-        return valor;
+    public Object getValor() {
+        if(this.valor instanceof String)
+            return (String)valor;
+        return this.valor;
     }
 
-    public void setValor(String valor) {
+    public void setValor(Object valor) {
         this.valor = valor;
     }
 
@@ -38,7 +40,7 @@ public class Nodo {
     }
 
     public String toString() {
-        return this.getValor();
+        return (String)this.getValor();
     }
 
     public int getProfundidad() {
@@ -51,9 +53,9 @@ public class Nodo {
     public String getCamino() {
 
         if (getPadre() != null) {
-            return getPadre().getCamino() + " " + getValor();
+            return getPadre().getCamino() + " " + getValor().toString();
         }
-        return getValor();
+        return getValor().toString();
     }
 
     public int getCosteCamino(){
@@ -66,7 +68,11 @@ public class Nodo {
 
     public boolean equals(Object obj) {
         if (obj instanceof Nodo) {
-            return ((Nodo) obj).getValor().equalsIgnoreCase(getValor());
+            if(((Nodo) obj).getValor() instanceof String){
+                return ((String)((Nodo) obj).getValor()).equalsIgnoreCase((String)getValor());
+            }else{
+                return ((Nodo) obj).getValor().equals(getValor());
+            }
         }
         return false;
     }

@@ -17,7 +17,7 @@ public class AlgoritmoBusquedaNoInformada implements IBusqueda {
      * @param explorador        Clase con la funcion para buscar los nodos frontera de un nodo concreto
      * @return                  El nodo solucion del que recuperar el camino
      */
-    public Solucion run(String datosIniciales, String solucionFinal, IExplorador explorador) {
+    public Solucion run(Object datosIniciales, Object solucionFinal, IExplorador explorador) {
 
         Nodo root = new Nodo(null, datosIniciales);
         Nodo solucion = new Nodo(null, solucionFinal);

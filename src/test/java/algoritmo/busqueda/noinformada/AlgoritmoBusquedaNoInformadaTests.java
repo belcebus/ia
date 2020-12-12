@@ -2,6 +2,7 @@ package algoritmo.busqueda.noinformada;
 
 import org.junit.Assert;
 import org.junit.Test;
+import utilidades.Coordenada;
 import utilidades.Solucion;
 import utilidades.exploradores.ExploradorLineal;
 import utilidades.exploradores.FactoriaExploradores;
@@ -500,7 +501,21 @@ public class AlgoritmoBusquedaNoInformadaTests {
         Assert.assertEquals(1106,solucionPuzzle.getCoste());
     }
 
+    @Test
+    public void busquedaRescateAmplitud(){
+        AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
+        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.BUSQUEDA_Y_RESCATE,IExplorador.AMPLITUD);
+        Coordenada inicio = new Coordenada(4,5);
+        Coordenada solucion =  new Coordenada(6,7);
+        Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
+                inicio,
+                solucion,
+                factoria.crearExplorador());
 
-
+        Assert.assertEquals("(4,5) (4,6) (4,7) (5,7) (6,7)",solucionPuzzle.getCamino().trim());
+        Assert.assertEquals(29,solucionPuzzle.getNodosVisitados());
+        Assert.assertEquals(112,solucionPuzzle.getNodosExplorados());
+        Assert.assertEquals(4,solucionPuzzle.getProfundidad());
+    }
 
 }

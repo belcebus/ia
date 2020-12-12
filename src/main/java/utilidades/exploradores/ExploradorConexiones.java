@@ -5,12 +5,23 @@ import utilidades.Nodo;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class ExploradorConexiones implements IExplorador{
+public class ExploradorConexiones extends Explorador{
 
     private final HashMap<String, HashMap<String, Integer>> conexiones;
-    private final String metodoExploracion;
-    private int limiteProfundidad;
 
+    public ExploradorConexiones(String metodoExploracion, HashMap<String, HashMap<String, Integer>> conexiones) {
+        super(metodoExploracion);
+        this.conexiones=conexiones;
+    }
+
+
+    public ExploradorConexiones(String metodoExploracion, HashMap<String, HashMap<String, Integer>> conexiones, int limiteProfundidad) {
+        super(metodoExploracion, limiteProfundidad);
+        this.conexiones=conexiones;
+    }
+
+
+    /*
     public ExploradorConexiones(String metodoExploracion, HashMap<String, HashMap<String, Integer>> conexiones) {
         this.conexiones = conexiones;
         this.metodoExploracion = metodoExploracion;
@@ -21,6 +32,8 @@ public class ExploradorConexiones implements IExplorador{
         this.metodoExploracion = metodoExploracion;
         this.limiteProfundidad = limiteProfundidad;
     }
+
+     */
 
     @Override
     public LinkedList<Nodo> explorarFrontera(Nodo nodo) {
@@ -39,7 +52,7 @@ public class ExploradorConexiones implements IExplorador{
     @Override
     public Nodo siguienteNodo(LinkedList<Nodo> nodosFrontera) {
 
-        if (this.metodoExploracion.equalsIgnoreCase(IExplorador.AMPLITUD)) {
+        if (metodoExploracion.equalsIgnoreCase(IExplorador.AMPLITUD)) {
             return nodosFrontera.removeFirst(); //FIFO
         } else if (this.metodoExploracion.equalsIgnoreCase(PROFUNDIDAD)) {
             return nodosFrontera.removeLast(); //LIFO
