@@ -1,7 +1,5 @@
 package utilidades;
 
-import java.util.List;
-
 public class Solucion {
 
     private Nodo nodoSolucion;
@@ -40,5 +38,12 @@ public class Solucion {
         }else{
             return -1;
         }
+    }
+
+    public String toString(){
+        return    "Profundidad: " + getProfundidad() +
+                "\nCamino:      " + getCamino() +
+                "\nVisitados:   " + getNodosVisitados() +
+                "\nExplorados:  " + getNodosExplorados();
     }
 }

@@ -27,28 +27,28 @@ public class AlgoritmoBusqueda {
         LinkedList<Nodo> nuevaFrontera;
 
         nodosFrontera.add(root); //En la primera iteración se utiliza el nodo raíz como frontera
-        Nodo nodoActual;
+        Solucion nodoSolucion=null;
 
-        while (!nodosFrontera.isEmpty()) { //Procesamos la lista de nodos frontera hasta vaciarla o encontrar solucion.
+        while (!nodosFrontera.isEmpty() && nodoSolucion==null) { //Procesamos la lista de nodos frontera hasta vaciarla o encontrar solucion.
 
-            nodoActual = explorador.siguienteNodo(nodosFrontera);
+            Nodo nodoActual = explorador.siguienteNodo(nodosFrontera);
 
             if(nodoActual==null){
-                return new Solucion(null,nodosVisitados.size(),nodosExplorados ); //Hemos llegado al final de la frontera (limite en profundidad)
-            }
+                nodoSolucion = new Solucion(null,nodosVisitados.size(),nodosExplorados ); //Hemos llegado al final de la frontera (limite en profundidad)
+            }else{
+                if(!nodosVisitados.contains(nodoActual)) { //Solamente se procesan los nodos no visitados.
 
-            if(!nodosVisitados.contains(nodoActual)){ //Solamente se procesan los nodos no visitados.
+                    nodosVisitados.add(nodoActual);
 
-                nodosVisitados.add(nodoActual);
-
-                if (nodoActual.equals(solucion)) { //Verificamos si el nodo actual es una solución
-                    return new Solucion(nodoActual,nodosVisitados.size(),nodosExplorados);
+                    if (nodoActual.equals(solucion)) { //Verificamos si el nodo actual es una solución
+                        nodoSolucion = new Solucion(nodoActual, nodosVisitados.size(), nodosExplorados);
+                    }
+                    nuevaFrontera = explorador.explorarFrontera(nodoActual); //Calculo de la nueva frontera.
+                    nodosExplorados += nuevaFrontera.size();
+                    nodosFrontera.addAll(nuevaFrontera);
                 }
-                nuevaFrontera = explorador.explorarFrontera(nodoActual); //Calculo de la nueva frontera.
-                nodosExplorados += nuevaFrontera.size();
-                nodosFrontera.addAll(nuevaFrontera);
             }
         }
-        return null;
+        return nodoSolucion;
     }
 }

@@ -37,11 +37,7 @@ public class BusquedaNoInformada {
                 solucionFinal,
                 new ExploradorLineal(IExplorador.AMPLITUD));
         tiempoFinal = System.currentTimeMillis() - tiempoComienzo;
-        System.out.println("Profundidad: " + solucionPuzzleAmplitud.getProfundidad() +
-                            "\nCamino:      " + solucionPuzzleAmplitud.getCamino() +
-                            "\nVisitados:   " + solucionPuzzleAmplitud.getNodosVisitados() +
-                            "\nExplorados:  " + solucionPuzzleAmplitud.getNodosExplorados() +
-                            "\nTiempo:      " + tiempoFinal + " ms");
+        System.out.println(solucionPuzzleAmplitud + "\nTiempo:      " + tiempoFinal + " ms");
 
         System.out.println("\n_-_- Puzzle lineal exploración en profundidad [" + datosIniciales + "->"+ solucionFinal + "] -_-_");
         tiempoComienzo = System.currentTimeMillis();
@@ -50,11 +46,7 @@ public class BusquedaNoInformada {
                 solucionFinal,
                 new ExploradorLineal(IExplorador.PROFUNDIDAD));
         tiempoFinal = System.currentTimeMillis() - tiempoComienzo;
-        System.out.println("Profundidad: " + solucionPuzzleProfundidad.getProfundidad() +
-                            "\nCamino:      " + solucionPuzzleProfundidad.getCamino()+
-                            "\nVisitados:   " + solucionPuzzleProfundidad.getNodosVisitados() +
-                            "\nExplorados:  " + solucionPuzzleProfundidad.getNodosExplorados() +
-                            "\nTiempo:      " + tiempoFinal + " ms");
+        System.out.println(solucionPuzzleProfundidad + "\nTiempo:      " + tiempoFinal + " ms");
 
         System.out.println("\n_-_- Puzzle lineal exploración en profundidad limitada [" + datosIniciales + "->"+ solucionFinal
                 + " | Limite Profundidad: "+ limiteProfundidad + "] -_-_");
@@ -64,11 +56,7 @@ public class BusquedaNoInformada {
                 solucionFinal,
                 new ExploradorLineal(IExplorador.PROFUNDIDAD_LIMITADA,limiteProfundidad));
         tiempoFinal = System.currentTimeMillis() - tiempoComienzo;
-        System.out.println("Profundidad: " + solucionPuzzleProfundidadLimitada.getProfundidad() +
-                            "\nCamino:      " + solucionPuzzleProfundidadLimitada.getCamino()+
-                            "\nVisitados:   " + solucionPuzzleProfundidadLimitada.getNodosVisitados() +
-                            "\nExplorados:  " + solucionPuzzleProfundidadLimitada.getNodosExplorados() +
-                            "\nTiempo:      " + tiempoFinal + " ms");
+        System.out.println(solucionPuzzleProfundidadLimitada + "\nTiempo:      " + tiempoFinal + " ms");
 
         /*
             PROBLEMA CONEXIONES O TRANSBORDOS EN VUELOS
@@ -85,11 +73,7 @@ public class BusquedaNoInformada {
                 ciudadDestino,
                 new ExploradorVuelos(IExplorador.AMPLITUD, GeneradorConexiones.getConexionesVuelos()));
         tiempoFinal = System.currentTimeMillis() - tiempoComienzo;
-        System.out.println("Profundidad: " + solucionVuelosAmplitud.getProfundidad() +
-                            "\nCamino:      " + solucionVuelosAmplitud.getCamino()+
-                            "\nVisitados:   " + solucionVuelosAmplitud.getNodosVisitados() +
-                            "\nExplorados:  " + solucionVuelosAmplitud.getNodosExplorados() +
-                            "\nTiempo:      " + tiempoFinal + " ms");
+        System.out.println(solucionVuelosAmplitud + "\nTiempo:      " + tiempoFinal + " ms");
 
         System.out.println("\n_-_- Conexiones vuelo en profundidad ["+ciudadOrigen+"->"+ciudadDestino+"] -_-_");
         tiempoComienzo = System.currentTimeMillis();
@@ -98,11 +82,7 @@ public class BusquedaNoInformada {
                 ciudadDestino,
                 new ExploradorVuelos(IExplorador.PROFUNDIDAD, GeneradorConexiones.getConexionesVuelos()));
         tiempoFinal = System.currentTimeMillis() - tiempoComienzo;
-        System.out.println("Profundidad: " + solucionVuelosProfundidad.getProfundidad() +
-                            "\nCamino:      " + solucionVuelosProfundidad.getCamino() +
-                            "\nVisitados:   " + solucionVuelosProfundidad.getNodosVisitados() +
-                            "\nExplorados:  " + solucionVuelosProfundidad.getNodosExplorados() +
-                            "\nTiempo:      " + tiempoFinal + " ms");
+        System.out.println(solucionVuelosProfundidad + "\nTiempo:      " + tiempoFinal + " ms");
 
         System.out.println("\n_-_- Conexiones vuelo en profundidad limitada ["+ciudadOrigen+"->"+ciudadDestino+"] -_-_");
         tiempoComienzo = System.currentTimeMillis();
@@ -111,17 +91,11 @@ public class BusquedaNoInformada {
                 ciudadDestino,
                 new ExploradorVuelos(IExplorador.PROFUNDIDAD_LIMITADA, GeneradorConexiones.getConexionesVuelos(), limiteProfundidadVuelos));
         tiempoFinal = System.currentTimeMillis() - tiempoComienzo;
-        System.out.println("Profundidad: " + solucionVuelosProfundidadLimitada.getProfundidad() +
-                            "\nCamino:      " + solucionVuelosProfundidadLimitada.getCamino() +
-                            "\nVisitados:   " + solucionVuelosProfundidadLimitada.getNodosVisitados() +
-                            "\nExplorados:  " + solucionVuelosProfundidadLimitada.getNodosExplorados() +
-                            "\nTiempo:      " + tiempoFinal + " ms");
+        System.out.println( solucionVuelosProfundidadLimitada + "\nTiempo:      " + tiempoFinal + " ms");
 
         /*
             PROBLEMA DEL VIAJANTE DE COMERCIO: TRAVEL SALESMAN PROBLEM (TPS)
          */
-
-
         String ciudadOrigenViajante="SEVILLA";
         String ciudadDestinoViajante="SANTIAGO";
 
@@ -132,12 +106,6 @@ public class BusquedaNoInformada {
                 ciudadDestinoViajante,
                 new ExploradorViajante(IExplorador.COSTE_UNIFORME, GeneradorConexiones.getConexionesViajante()));
         tiempoFinal = System.currentTimeMillis() - tiempoComienzo;
-        System.out.println("Profundidad: " + solucionViajanteCosteUniforme.getProfundidad() +
-                "\nCoste        " + solucionViajanteCosteUniforme.getCoste() +
-                "\nCamino:      " + solucionViajanteCosteUniforme.getCamino() +
-                "\nVisitados:   " + solucionViajanteCosteUniforme.getNodosVisitados() +
-                "\nExplorados:  " + solucionViajanteCosteUniforme.getNodosExplorados() +
-                "\nTiempo:      " + tiempoFinal + " ms");
+        System.out.println(solucionViajanteCosteUniforme + "\nTiempo:      " + tiempoFinal + " ms");
     }
-
 }
