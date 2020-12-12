@@ -1,7 +1,5 @@
 package utilidades;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class GeneradorConexiones {
@@ -123,7 +121,7 @@ public class GeneradorConexiones {
         conexionesVuelos.put("SANTANDER", conexionesSantander);
 
         HashMap<String,Integer> conexionesZaragoza = new HashMap<>();
-        conexionesZaragoza.put("BACERLONA",0);
+        conexionesZaragoza.put("BARCELONA",0);
         conexionesVuelos.put("ZARAGOZA", conexionesZaragoza);
 
         HashMap<String,Integer> conexionesBarcelona = new HashMap<>();

@@ -6,7 +6,7 @@ import java.util.LinkedList;
 
 public class ExploradorLineal implements IExplorador {
 
-    private String metodoExploracion ;
+    private final String metodoExploracion ;
     private int limiteProfundidad;
 
     public ExploradorLineal(String metodoExploracion) {
@@ -18,8 +18,8 @@ public class ExploradorLineal implements IExplorador {
         this.limiteProfundidad = limiteProfundidad;
     }
     @Override
-    public LinkedList explorarFrontera(Nodo nodo) {
-        LinkedList<Nodo> listaNodosHijos = new LinkedList<Nodo>();
+    public LinkedList<Nodo> explorarFrontera(Nodo nodo) {
+        LinkedList<Nodo> listaNodosHijos = new LinkedList<>();
         //debemos intercambiar todas las posisciones del valor del nodo
         for (int i = 0; i < nodo.getValor().length() - 1; i++) {
             char[] valor = nodo.getValor().toCharArray();
