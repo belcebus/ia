@@ -27,11 +27,12 @@ public class AlgoritmoBusqueda {
         LinkedList<Nodo> nuevaFrontera;
 
         nodosFrontera.add(root); //En la primera iteración se utiliza el nodo raíz como frontera
+        Nodo nodoActual;
         Solucion nodoSolucion=null;
 
         while (!nodosFrontera.isEmpty() && nodoSolucion==null) { //Procesamos la lista de nodos frontera hasta vaciarla o encontrar solucion.
 
-            Nodo nodoActual = explorador.siguienteNodo(nodosFrontera);
+            nodoActual = explorador.siguienteNodo(nodosFrontera);
 
             if(nodoActual==null){
                 nodoSolucion = new Solucion(null,nodosVisitados.size(),nodosExplorados ); //Hemos llegado al final de la frontera (limite en profundidad)
