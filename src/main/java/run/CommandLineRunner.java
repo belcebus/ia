@@ -49,7 +49,7 @@ public class CommandLineRunner {
             CommandLine cmd = parser.parse(commandLineOptions, args, false);
 
             if (cmd.getOptions().length < obligatorios.size()) { //todas los parametros obligatorios
-                String uso = "java -jar algoritmos.jar opciones";
+                String uso = "java -jar algoritmos.jar";
                 String ejemplo = "ejemplo: java -jar algoritmo.jar " +
                         "--algoritmo busqueda " +
                         "--tipo noinformada " +
