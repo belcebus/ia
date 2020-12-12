@@ -41,9 +41,14 @@ public class Solucion {
     }
 
     public String toString(){
-        return    "Profundidad: " + getProfundidad() +
+        String res = "Profundidad: " + getProfundidad() +
                 "\nCamino:      " + getCamino() +
                 "\nVisitados:   " + getNodosVisitados() +
                 "\nExplorados:  " + getNodosExplorados();
+        if(getCoste()>0){
+            res += "\nCoste:       " + getCoste();
+        }
+
+        return res;
     }
 }

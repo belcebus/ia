@@ -6,12 +6,12 @@ import java.util.LinkedList;
 
 public interface IExplorador {
 
-    public static final String AMPLITUD = "amplitud";
-    public static final String PROFUNDIDAD = "profundidad";
-    public static final String PROFUNDIDAD_LIMITADA = "profundidad_limitada";
-    public static final String COSTE_UNIFORME = "coste_uniforme";
+    String AMPLITUD = "amplitud";
+    String PROFUNDIDAD = "profundidad";
+    String PROFUNDIDAD_LIMITADA = "profundidad_limitada";
+    String COSTE_UNIFORME = "coste_uniforme";
 
-    public LinkedList explorarFrontera(Nodo nodo);
+    LinkedList<Nodo> explorarFrontera(Nodo nodo);
 
-    public Nodo siguienteNodo(LinkedList<Nodo> nodosFrontera);
+    Nodo siguienteNodo(LinkedList<Nodo> nodosFrontera);
 }

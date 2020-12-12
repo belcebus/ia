@@ -2,8 +2,7 @@ package test;
 
 import busqueda.noinformada.AlgoritmoBusqueda;
 import utilidades.exploradores.ExploradorLineal;
-import utilidades.exploradores.ExploradorViajante;
-import utilidades.exploradores.ExploradorVuelos;
+import utilidades.exploradores.ExploradorConexiones;
 import utilidades.exploradores.IExplorador;
 import utilidades.GeneradorConexiones;
 import utilidades.Solucion;
@@ -71,7 +70,7 @@ public class BusquedaNoInformada {
         Solucion solucionVuelosAmplitud = algoritmoBusqueda.run(
                 ciudadOrigen,
                 ciudadDestino,
-                new ExploradorVuelos(IExplorador.AMPLITUD, GeneradorConexiones.getConexionesVuelos()));
+                new ExploradorConexiones(IExplorador.AMPLITUD, GeneradorConexiones.getConexionesVuelos()));
         tiempoFinal = System.currentTimeMillis() - tiempoComienzo;
         System.out.println(solucionVuelosAmplitud + "\nTiempo:      " + tiempoFinal + " ms");
 
@@ -80,7 +79,7 @@ public class BusquedaNoInformada {
         Solucion solucionVuelosProfundidad = algoritmoBusqueda.run(
                 ciudadOrigen,
                 ciudadDestino,
-                new ExploradorVuelos(IExplorador.PROFUNDIDAD, GeneradorConexiones.getConexionesVuelos()));
+                new ExploradorConexiones(IExplorador.PROFUNDIDAD, GeneradorConexiones.getConexionesVuelos()));
         tiempoFinal = System.currentTimeMillis() - tiempoComienzo;
         System.out.println(solucionVuelosProfundidad + "\nTiempo:      " + tiempoFinal + " ms");
 
@@ -89,14 +88,14 @@ public class BusquedaNoInformada {
         Solucion solucionVuelosProfundidadLimitada = algoritmoBusqueda.run(
                 ciudadOrigen,
                 ciudadDestino,
-                new ExploradorVuelos(IExplorador.PROFUNDIDAD_LIMITADA, GeneradorConexiones.getConexionesVuelos(), limiteProfundidadVuelos));
+                new ExploradorConexiones(IExplorador.PROFUNDIDAD_LIMITADA, GeneradorConexiones.getConexionesVuelos(), limiteProfundidadVuelos));
         tiempoFinal = System.currentTimeMillis() - tiempoComienzo;
         System.out.println( solucionVuelosProfundidadLimitada + "\nTiempo:      " + tiempoFinal + " ms");
 
         /*
             PROBLEMA DEL VIAJANTE DE COMERCIO: TRAVEL SALESMAN PROBLEM (TPS)
          */
-        String ciudadOrigenViajante="SEVILLA";
+        String ciudadOrigenViajante="MALAGA";
         String ciudadDestinoViajante="SANTIAGO";
 
         System.out.println("\n_-_- Viajante en coste uniforme ["+ciudadOrigenViajante+"->"+ciudadDestinoViajante+"] -_-_");
@@ -104,8 +103,27 @@ public class BusquedaNoInformada {
         Solucion solucionViajanteCosteUniforme = algoritmoBusqueda.run(
                 ciudadOrigenViajante,
                 ciudadDestinoViajante,
-                new ExploradorViajante(IExplorador.COSTE_UNIFORME, GeneradorConexiones.getConexionesViajante()));
+                new ExploradorConexiones(IExplorador.COSTE_UNIFORME, GeneradorConexiones.getConexionesViajante()));
         tiempoFinal = System.currentTimeMillis() - tiempoComienzo;
-        System.out.println(solucionViajanteCosteUniforme + "\nTiempo:      " + tiempoFinal + " ms");
+        System.out.println(solucionViajanteCosteUniforme + "\nTiempo:      " + tiempoFinal + " ms") ;
+
+
+        System.out.println("\n_-_- Viajante en amplitud ["+ciudadOrigenViajante+"->"+ciudadDestinoViajante+"] -_-_");
+        tiempoComienzo = System.currentTimeMillis();
+        Solucion solucionViajanteAmplitud = algoritmoBusqueda.run(
+                ciudadOrigenViajante,
+                ciudadDestinoViajante,
+                new ExploradorConexiones(IExplorador.AMPLITUD, GeneradorConexiones.getConexionesViajante()));
+        tiempoFinal = System.currentTimeMillis() - tiempoComienzo;
+        System.out.println(solucionViajanteAmplitud + "\nTiempo:      " + tiempoFinal + " ms");
+
+        System.out.println("\n_-_- Viajante en profundidad ["+ciudadOrigenViajante+"->"+ciudadDestinoViajante+"] -_-_");
+        tiempoComienzo = System.currentTimeMillis();
+        Solucion solucionViajanteProfundidad = algoritmoBusqueda.run(
+                ciudadOrigenViajante,
+                ciudadDestinoViajante,
+                new ExploradorConexiones(IExplorador.PROFUNDIDAD, GeneradorConexiones.getConexionesViajante()));
+        tiempoFinal = System.currentTimeMillis() - tiempoComienzo;
+        System.out.println(solucionViajanteProfundidad + "\nTiempo:      " + tiempoFinal + " ms");
     }
 }
