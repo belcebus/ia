@@ -9,7 +9,6 @@ import utilidades.exploradores.FactoriaExploradores;
 import utilidades.exploradores.IExplorador;
 
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 public class CommandLineRunner {
