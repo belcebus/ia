@@ -54,19 +54,17 @@ Problemas que se pueden resolver:
 
 #### Puzzle lineal
 
-* En amplitud
-  
+##### En amplitud
 
     java -jar target/algoritmos-1.0-SNAPSHOT.one-jar.jar \
     --algoritmo busqueda \
     --tipo noinformada \
-    --variacion amplitud \        
+    --variacion amplitud \
     --problema lineal \
     --inicio 4321 \
     --solucion 1234
 
-* En profundidad
-  
+##### En profundidad
 
     java -jar target/algoritmos-1.0-SNAPSHOT.one-jar.jar \
     --algoritmo busqueda \
@@ -84,31 +82,28 @@ Problemas que se pueden resolver:
 
 #### Búsqueda de coordenadas
 
-* En amplitud
 
+##### En amplitud
 
     java -jar target/algoritmos-1.0-SNAPSHOT.one-jar.jar \
     --algoritmo busqueda \
     --tipo noinformada \
-    --variacion amplitud \        
+    --variacion amplitud \
     --problema busquedayrescate \
     --inicio "(4,5)" \
     --solucion "(6,7)" 
 
-* En profundidad
-
+##### En profundidad
 
     java -jar target/algoritmos-1.0-SNAPSHOT.one-jar.jar \
     --algoritmo busqueda \
     --tipo noinformada \
-    --variacion amplitud \        
+    --variacion amplitud \
     --problema busquedayrescate \
     --inicio "(4,5)" \
     --solucion "(6,7)"  
 
-
-* En profundidad con limitación
-
+##### En profundidad con limitación
 
     java -jar target/algoritmos-1.0-SNAPSHOT.one-jar.jar \
     --algoritmo busqueda \
