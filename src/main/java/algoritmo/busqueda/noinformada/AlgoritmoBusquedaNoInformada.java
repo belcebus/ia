@@ -13,7 +13,7 @@ public class AlgoritmoBusquedaNoInformada implements IBusqueda {
     /**
      *
      * @param datosIniciales    Valor del nodo raiz
-     * @param solucionFinal     Valor del nodo solucion al que llegar
+     * @param solucionFinal     Valor del nodo solucion al que llegar / lista posibles estado solucion
      * @param explorador        Clase con la funcion para buscar los nodos frontera de un nodo concreto
      * @return                  El nodo solucion del que recuperar el camino
      */
@@ -31,7 +31,7 @@ public class AlgoritmoBusquedaNoInformada implements IBusqueda {
         Nodo nodoActual;
         Solucion nodoSolucion=null;
 
-        while (!nodosFrontera.isEmpty() && nodoSolucion==null) { //Procesamos la lista de nodos frontera hasta vaciarla o encontrar solucion.
+        while (!nodosFrontera.isEmpty() && nodoSolucion==null ) { //Procesamos la lista de nodos frontera hasta vaciarla o encontrar solucion.
 
             nodoActual = explorador.siguienteNodo(nodosFrontera);
 
@@ -47,6 +47,8 @@ public class AlgoritmoBusquedaNoInformada implements IBusqueda {
                     nodosExplorados += nuevaFrontera.size();
                     nodosFrontera.addAll(nuevaFrontera);
                 }
+            }else{ //salimos, no hay más nodos que procesar
+                break;
             }
         }
         if(nodoSolucion==null){ //preparamos una solución con las estadísticas en caso de habere agotado la frontera sin encontrar solucion
