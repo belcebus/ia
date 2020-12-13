@@ -8,6 +8,8 @@ import utilidades.exploradores.ExploradorLineal;
 import utilidades.exploradores.FactoriaExploradores;
 import utilidades.exploradores.IExplorador;
 
+import java.util.LinkedList;
+
 public class AlgoritmoBusquedaNoInformadaTests {
 
     @Test
@@ -516,6 +518,87 @@ public class AlgoritmoBusquedaNoInformadaTests {
         Assert.assertEquals(29,solucionPuzzle.getNodosVisitados());
         Assert.assertEquals(112,solucionPuzzle.getNodosExplorados());
         Assert.assertEquals(4,solucionPuzzle.getProfundidad());
+    }
+
+    @Test
+    public void busquedaRescateProfundidadLimitada(){
+        AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
+        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.BUSQUEDA_Y_RESCATE,IExplorador.PROFUNDIDAD_LIMITADA,"4");
+        Coordenada inicio = new Coordenada(4,5);
+        Coordenada solucion =  new Coordenada(6,7);
+        Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
+                inicio,
+                solucion,
+                factoria.crearExplorador());
+
+        Assert.assertEquals("(4,5) (5,5) (6,5) (6,6) (6,7)",solucionPuzzle.getCamino().trim());
+        Assert.assertEquals(25,solucionPuzzle.getNodosVisitados());
+        Assert.assertEquals(96,solucionPuzzle.getNodosExplorados());
+        Assert.assertEquals(4,solucionPuzzle.getProfundidad());
+    }
+
+    @Test
+    public void busquedaRescateListaCoordenadasProfundidadLimitada1(){
+        AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
+        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.BUSQUEDA_Y_RESCATE,IExplorador.PROFUNDIDAD_LIMITADA,"4");
+        Coordenada inicio = new Coordenada(4,5);
+        Coordenada solucion1 =  new Coordenada(6,7);
+        Coordenada solucion2 = new Coordenada(10,10);
+        LinkedList<Coordenada> coordenadas = new LinkedList<>();
+        coordenadas.add(solucion1);
+        coordenadas.add(solucion2);
+        Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
+                inicio,
+                coordenadas,
+                factoria.crearExplorador());
+
+        Assert.assertEquals("(4,5) (5,5) (6,5) (6,6) (6,7)",solucionPuzzle.getCamino().trim());
+        Assert.assertEquals(25,solucionPuzzle.getNodosVisitados());
+        Assert.assertEquals(96,solucionPuzzle.getNodosExplorados());
+        Assert.assertEquals(4,solucionPuzzle.getProfundidad());
+    }
+
+    @Test
+    public void busquedaRescateListaCoordenadasProfundidadLimitada2(){
+        AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
+        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.BUSQUEDA_Y_RESCATE,IExplorador.PROFUNDIDAD_LIMITADA,"4");
+        Coordenada inicio = new Coordenada(4,5);
+        Coordenada solucion1 =  new Coordenada(6,7);
+        LinkedList<Coordenada> coordenadas = new LinkedList<>();
+        coordenadas.add(solucion1);
+        Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
+                inicio,
+                coordenadas,
+                factoria.crearExplorador());
+
+        Assert.assertEquals("(4,5) (5,5) (6,5) (6,6) (6,7)",solucionPuzzle.getCamino().trim());
+        Assert.assertEquals(25,solucionPuzzle.getNodosVisitados());
+        Assert.assertEquals(96,solucionPuzzle.getNodosExplorados());
+        Assert.assertEquals(4,solucionPuzzle.getProfundidad());
+    }
+    @Test
+    public void busquedaRescateListaCoordenadasProfundidadLimitada3(){
+        AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
+        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.BUSQUEDA_Y_RESCATE,IExplorador.PROFUNDIDAD_LIMITADA,"4");
+        Coordenada inicio = new Coordenada(4,5);
+        Coordenada solucion1 =  new Coordenada(6,7);
+        Coordenada solucion2 =  new Coordenada(10,10);
+        Coordenada solucion3 =  new Coordenada(5,5);
+
+        LinkedList<Coordenada> coordenadas = new LinkedList<>();
+        coordenadas.add(solucion1);
+        coordenadas.add(solucion2);
+        coordenadas.add(solucion3);
+
+        Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
+                inicio,
+                coordenadas,
+                factoria.crearExplorador());
+
+        Assert.assertEquals("(4,5) (5,5)",solucionPuzzle.getCamino().trim());
+        Assert.assertEquals(14,solucionPuzzle.getNodosVisitados());
+        Assert.assertEquals(52,solucionPuzzle.getNodosExplorados());
+        Assert.assertEquals(1,solucionPuzzle.getProfundidad());
     }
 
 }

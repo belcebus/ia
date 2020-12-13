@@ -32,7 +32,7 @@ public abstract class Explorador implements IExplorador{
             Nodo aux = nodosFrontera.removeLast(); //LIFO
 
             while(aux!=null && !nodosFrontera.isEmpty() && aux.getProfundidad()>limiteProfundidad){
-                aux = nodosFrontera.removeLast(); //si el nodo frontera está demasido profundo pasamos alsiguiente
+                aux = nodosFrontera.removeLast(); //si el nodo frontera está demasido profundo pasamos al siguiente
             }
 
             if(aux ==  null || aux.getProfundidad()>limiteProfundidad){

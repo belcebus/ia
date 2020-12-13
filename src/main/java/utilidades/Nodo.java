@@ -1,5 +1,7 @@
 package utilidades;
 
+import java.util.LinkedList;
+
 public class Nodo {
 
     private Nodo padre;
@@ -66,9 +68,27 @@ public class Nodo {
         return 0;
     }
 
+
+    public boolean esSolucion(Nodo obj){
+        // si el contenido del nodo es una lista
+        if(obj.getValor() instanceof LinkedList){
+            //recorremos cada elemento de la lista comparándolo con este
+            boolean solucionEncontrada = false;
+            for(Object o: (LinkedList)obj.getValor()){
+                if(this.getValor().equals((Coordenada)o)){
+                    solucionEncontrada = true;
+                    break;
+                }
+            }
+            return solucionEncontrada;
+        }else{
+            return this.equals(obj);
+        }
+    }
+
     public boolean equals(Object obj) {
         if (obj instanceof Nodo) {
-            if(((Nodo) obj).getValor() instanceof String){
+            if(((Nodo) obj).getValor() instanceof String){ //caso normal de string para puzzle y ciudades
                 return ((String)((Nodo) obj).getValor()).equalsIgnoreCase((String)getValor());
             }else{
                 return ((Nodo) obj).getValor().equals(getValor());

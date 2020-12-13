@@ -11,6 +11,7 @@ import utilidades.exploradores.FactoriaExploradores;
 import utilidades.exploradores.IExplorador;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class CommandLineRunner {
@@ -91,13 +92,18 @@ public class CommandLineRunner {
                     if(problema.equalsIgnoreCase(IProblema.BUSQUEDA_Y_RESCATE)){
                         //transformar la entrada en coordendadas
                         Coordenada coordenadaInicio = new Coordenada(inicio);
-                        Coordenada coordenadaSolucion = new Coordenada(solucion);
-                        sol = abni.run(coordenadaInicio, coordenadaSolucion, factoria.crearExplorador());
+                        //Coordenada coordenadaSolucion = new Coordenada(solucion);
+
+                        String[] tokens = solucion.split(" ");
+                        LinkedList<Coordenada>  listaSoluciones = new LinkedList<>();
+                        for(String token:tokens){
+                            listaSoluciones.add(new Coordenada(token));
+                        }
+                        sol = abni.run(coordenadaInicio, listaSoluciones, factoria.crearExplorador());
 
                     }else{
                         sol = abni.run(inicio, solucion, factoria.crearExplorador());
                     }
-
                 } else {
                     System.out.println("Tipo de algoritmo no implementado para " + algoritmo + ": " + tipoAlgoritmo);
                 }

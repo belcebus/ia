@@ -82,7 +82,6 @@ Problemas que se pueden resolver:
 
 #### Búsqueda de coordenadas
 
-
 ##### En amplitud
 
     java -jar target/algoritmos-1.0-SNAPSHOT.one-jar.jar \
@@ -103,7 +102,7 @@ Problemas que se pueden resolver:
     --inicio "(4,5)" \
     --solucion "(6,7)"  
 
-##### En profundidad con limitación
+##### En profundidad con limitación una única coordenada
 
     java -jar target/algoritmos-1.0-SNAPSHOT.one-jar.jar \
     --algoritmo busqueda \
@@ -112,6 +111,17 @@ Problemas que se pueden resolver:
     --problema busquedayrescate \
     --inicio "(4,5)" \
     --solucion "(6,7)" \
-    --limite 10000
+    --limite 5
+
+##### En profundidad con limitación varias coordenada
+
+    java -jar target/algoritmos-1.0-SNAPSHOT.one-jar.jar \
+    --algoritmo busqueda \
+    --tipo noinformada \
+    --variacion profundidadlimitada \
+    --problema busquedayrescate \
+    --inicio "(4,5)" \
+    --solucion "(6,7) (10,10) (5,5)" \
+    --limite 5
 
 ## Búsqueda informada

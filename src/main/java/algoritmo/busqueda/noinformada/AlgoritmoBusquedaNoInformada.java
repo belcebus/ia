@@ -40,7 +40,7 @@ public class AlgoritmoBusquedaNoInformada implements IBusqueda {
 
                     nodosVisitados.add(nodoActual);
 
-                    if (nodoActual.equals(solucion)) { //Verificamos si el nodo actual es una solución
+                    if (nodoActual.esSolucion(solucion)) { //Verificamos si el nodo actual es una solución
                         nodoSolucion = new Solucion(nodoActual, nodosVisitados.size(), nodosExplorados);
                     }
                     nuevaFrontera = explorador.explorarFrontera(nodoActual); //Calculo de la nueva frontera.
