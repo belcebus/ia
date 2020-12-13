@@ -113,7 +113,7 @@ Problemas que se pueden resolver:
     java -jar target/algoritmos-1.0-SNAPSHOT.one-jar.jar \
     --algoritmo busqueda \
     --tipo noinformada \
-    --variacion profundidadlimitada \        
+    --variacion profundidadlimitada \
     --problema busquedayrescate \
     --inicio "(4,5)" \
     --solucion "(6,7)" \
