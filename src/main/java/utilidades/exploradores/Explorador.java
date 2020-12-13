@@ -34,8 +34,23 @@ public abstract class Explorador implements IExplorador{
             }else{
                 return aux;
             }
-        } else {
-            System.out.println("Método no valido: " + this.metodoExploracion);
+        } else if(metodoExploracion.equalsIgnoreCase(IExplorador.COSTE_UNIFORME)){
+            // COLA CON PRIORIDAD.
+            Nodo nodoMinimo=null;
+            int costeMinimo=Integer.MAX_VALUE;
+
+            Nodo nodoActual;
+            for (Nodo nodo : nodosFrontera) {
+                nodoActual = nodo;
+                if (nodoActual.getCoste() < costeMinimo) {
+                    nodoMinimo = nodoActual;
+                    costeMinimo = nodoActual.getCoste();
+                }
+            }
+            nodosFrontera.remove(nodoMinimo);
+            return nodoMinimo;
+        }else{
+            System.out.println("Metodo no valido: " + this.metodoExploracion);
             return null;
         }
     }
