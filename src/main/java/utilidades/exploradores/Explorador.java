@@ -28,8 +28,14 @@ public abstract class Explorador implements IExplorador{
         } else if (this.metodoExploracion.equalsIgnoreCase(PROFUNDIDAD)) {
             return nodosFrontera.removeLast(); //LIFO
         } else if (this.metodoExploracion.equalsIgnoreCase(PROFUNDIDAD_LIMITADA)){
+            //sacamos de la frontera aquellos nodos más profundos que el limite
             Nodo aux = nodosFrontera.removeLast(); //LIFO
-            if(aux.getProfundidad()>limiteProfundidad){
+
+            while(aux!=null && !nodosFrontera.isEmpty() && aux.getProfundidad()>limiteProfundidad){
+                aux = nodosFrontera.removeLast(); //si el nodo frontera está demasido profundo pasamos alsiguiente
+            }
+
+            if(aux ==  null || aux.getProfundidad()>limiteProfundidad){
                 return null;
             }else{
                 return aux;

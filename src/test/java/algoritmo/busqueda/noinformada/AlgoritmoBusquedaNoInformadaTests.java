@@ -166,10 +166,10 @@ public class AlgoritmoBusquedaNoInformadaTests {
                 "1234",
                 factoria.crearExplorador());
 
-        Assert.assertEquals("",solucionPuzzle.getCamino().trim());
-        Assert.assertEquals(11,solucionPuzzle.getNodosVisitados());
+        Assert.assertEquals("4321 4312 4132 4123 4213 4231 2431 2413 2143 2134 1234",solucionPuzzle.getCamino().trim());
+        Assert.assertEquals(12,solucionPuzzle.getNodosVisitados());
         Assert.assertEquals(33,solucionPuzzle.getNodosExplorados());
-        Assert.assertEquals(-1,solucionPuzzle.getProfundidad());
+        Assert.assertEquals(10,solucionPuzzle.getProfundidad());
     }
 
     @Test
@@ -283,8 +283,8 @@ public class AlgoritmoBusquedaNoInformadaTests {
                 factoria.crearExplorador());
 
         Assert.assertEquals("",solucionPuzzle.getCamino().trim());
-        Assert.assertEquals(2,solucionPuzzle.getNodosVisitados());
-        Assert.assertEquals(8,solucionPuzzle.getNodosExplorados());
+        Assert.assertEquals(4,solucionPuzzle.getNodosVisitados());
+        Assert.assertEquals(15,solucionPuzzle.getNodosExplorados());
         Assert.assertEquals(-1,solucionPuzzle.getProfundidad());
     }
 
@@ -417,8 +417,8 @@ public class AlgoritmoBusquedaNoInformadaTests {
                 factoria.crearExplorador());
 
         Assert.assertEquals("",solucionPuzzle.getCamino().trim());
-        Assert.assertEquals(2,solucionPuzzle.getNodosVisitados());
-        Assert.assertEquals(4,solucionPuzzle.getNodosExplorados());
+        Assert.assertEquals(3,solucionPuzzle.getNodosVisitados());
+        Assert.assertEquals(13,solucionPuzzle.getNodosExplorados());
         Assert.assertEquals(-1,solucionPuzzle.getProfundidad());
     }
 
@@ -432,8 +432,8 @@ public class AlgoritmoBusquedaNoInformadaTests {
                 factoria.crearExplorador());
 
         Assert.assertEquals("",solucionPuzzle.getCamino().trim());
-        Assert.assertEquals(3,solucionPuzzle.getNodosVisitados());
-        Assert.assertEquals(8,solucionPuzzle.getNodosExplorados());
+        Assert.assertEquals(4,solucionPuzzle.getNodosVisitados());
+        Assert.assertEquals(17,solucionPuzzle.getNodosExplorados());
         Assert.assertEquals(-1,solucionPuzzle.getProfundidad());
     }
 

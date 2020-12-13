@@ -105,8 +105,7 @@ public class CommandLineRunner {
                 System.out.println("Algoritmo no implementando: " + algoritmo);
             }
 
-            if (sol != null)
-                System.out.println(sol);
+            System.out.println(sol);
 
         } catch (ParseException e) {
             e.printStackTrace();

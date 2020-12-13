@@ -35,9 +35,7 @@ public class AlgoritmoBusquedaNoInformada implements IBusqueda {
 
             nodoActual = explorador.siguienteNodo(nodosFrontera);
 
-            if(nodoActual==null){
-                nodoSolucion = new Solucion(null,nodosVisitados.size(),nodosExplorados ); //Hemos llegado al final de la frontera (limite en profundidad)
-            }else{
+            if(nodoActual!=null){
                 if(!nodosVisitados.contains(nodoActual)) { //Solamente se procesan los nodos no visitados.
 
                     nodosVisitados.add(nodoActual);
@@ -50,6 +48,9 @@ public class AlgoritmoBusquedaNoInformada implements IBusqueda {
                     nodosFrontera.addAll(nuevaFrontera);
                 }
             }
+        }
+        if(nodoSolucion==null){ //preparamos una solución con las estadísticas en caso de habere agotado la frontera sin encontrar solucion
+            nodoSolucion = new Solucion(null,nodosVisitados.size(),nodosExplorados );
         }
         return nodoSolucion;
     }
