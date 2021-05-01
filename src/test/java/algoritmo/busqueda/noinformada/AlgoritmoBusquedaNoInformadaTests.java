@@ -1,14 +1,16 @@
 package algoritmo.busqueda.noinformada;
 
+import java.util.LinkedList;
+
 import org.junit.Assert;
 import org.junit.Test;
+
 import utilidades.Coordenada;
 import utilidades.Solucion;
 import utilidades.exploradores.ExploradorLineal;
 import utilidades.exploradores.FactoriaExploradores;
 import utilidades.exploradores.IExplorador;
 
-import java.util.LinkedList;
 
 public class AlgoritmoBusquedaNoInformadaTests {
 
@@ -30,7 +32,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void linealAmplitudConFactoria1(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.PUZZLE_LINEAL,IExplorador.AMPLITUD,"0");
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.PUZZLE_LINEAL,IExplorador.AMPLITUD,"0");
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "321",
                 "123",
@@ -45,7 +47,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void linealAmplitudConFactoria2(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.PUZZLE_LINEAL,IExplorador.AMPLITUD);
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.PUZZLE_LINEAL,IExplorador.AMPLITUD);
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "321",
                 "123",
@@ -59,7 +61,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void linealAmplitudConFactoria3(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.PUZZLE_LINEAL,IExplorador.AMPLITUD,"100");
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.PUZZLE_LINEAL,IExplorador.AMPLITUD,"100");
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "321",
                 "123",
@@ -89,7 +91,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void linealProfundidadConFactoria1(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.PUZZLE_LINEAL,IExplorador.PROFUNDIDAD);
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.PUZZLE_LINEAL,IExplorador.PROFUNDIDAD);
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "321",
                 "123",
@@ -103,7 +105,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void linealProfundidadConFactoria2(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.PUZZLE_LINEAL,IExplorador.PROFUNDIDAD,"0");
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.PUZZLE_LINEAL,IExplorador.PROFUNDIDAD,"0");
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "321",
                 "123",
@@ -117,7 +119,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void linealProfundidadConFactoria3(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.PUZZLE_LINEAL,IExplorador.PROFUNDIDAD,"100");
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.PUZZLE_LINEAL,IExplorador.PROFUNDIDAD,"100");
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "321",
                 "123",
@@ -132,7 +134,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void linealProfundidadLimitada1(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.PUZZLE_LINEAL,IExplorador.PROFUNDIDAD_LIMITADA,"100");
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.PUZZLE_LINEAL,IExplorador.PROFUNDIDAD_LIMITADA,"100");
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "321",
                 "123",
@@ -147,7 +149,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void linealProfundidadLimitada2(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.PUZZLE_LINEAL,IExplorador.PROFUNDIDAD_LIMITADA,"100");
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.PUZZLE_LINEAL,IExplorador.PROFUNDIDAD_LIMITADA,"100");
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "4321",
                 "1234",
@@ -162,7 +164,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void linealProfundidadLimitada3(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.PUZZLE_LINEAL,IExplorador.PROFUNDIDAD_LIMITADA,"10");
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.PUZZLE_LINEAL,IExplorador.PROFUNDIDAD_LIMITADA,"10");
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "4321",
                 "1234",
@@ -177,7 +179,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void conexionesAmplitudConFactoria1(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.CONEXIONES,IExplorador.AMPLITUD);
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.CONEXIONES,IExplorador.AMPLITUD);
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "MALAGA",
                 "SANTIAGO",
@@ -191,7 +193,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void conexionesAmplitudConFactoria2(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.CONEXIONES,IExplorador.AMPLITUD,"0");
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.CONEXIONES,IExplorador.AMPLITUD,"0");
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "MALAGA",
                 "SANTIAGO",
@@ -206,7 +208,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void conexionesAmplitudConFactoria3(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.CONEXIONES,IExplorador.AMPLITUD,"100");
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.CONEXIONES,IExplorador.AMPLITUD,"100");
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "MALAGA",
                 "SANTIAGO",
@@ -221,7 +223,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void conexionesProfundidadConFactoria1(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.CONEXIONES,IExplorador.PROFUNDIDAD);
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.CONEXIONES,IExplorador.PROFUNDIDAD);
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "MALAGA",
                 "SANTIAGO",
@@ -235,7 +237,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void conexionesProfundidadConFactoria2(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.CONEXIONES,IExplorador.PROFUNDIDAD,"0");
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.CONEXIONES,IExplorador.PROFUNDIDAD,"0");
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "MALAGA",
                 "SANTIAGO",
@@ -249,7 +251,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void conexionesProfundidadConFactoria3(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.CONEXIONES,IExplorador.PROFUNDIDAD,"100");
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.CONEXIONES,IExplorador.PROFUNDIDAD,"100");
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "MALAGA",
                 "SANTIAGO",
@@ -264,7 +266,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void conexionesProfundidadLimitadaConFactoria1(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.CONEXIONES,IExplorador.PROFUNDIDAD_LIMITADA,"100");
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.CONEXIONES,IExplorador.PROFUNDIDAD_LIMITADA,"100");
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "MALAGA",
                 "SANTIAGO",
@@ -278,7 +280,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void conexionesProfundidadLimitadaConFactoria2(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.CONEXIONES,IExplorador.PROFUNDIDAD_LIMITADA,"1");
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.CONEXIONES,IExplorador.PROFUNDIDAD_LIMITADA,"1");
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "MALAGA",
                 "SANTIAGO",
@@ -293,7 +295,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void viajanteAmplitudConFactoria1(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.VIAJANTE,IExplorador.AMPLITUD);
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.VIAJANTE,IExplorador.AMPLITUD);
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "MALAGA",
                 "SANTIAGO",
@@ -310,7 +312,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void viajanteAmplitudConFactoria2(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.VIAJANTE,IExplorador.AMPLITUD, "0");
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.VIAJANTE,IExplorador.AMPLITUD, "0");
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "MALAGA",
                 "SANTIAGO",
@@ -327,7 +329,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void viajanteAmplitudConFactoria3(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.VIAJANTE,IExplorador.AMPLITUD, "100");
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.VIAJANTE,IExplorador.AMPLITUD, "100");
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "MALAGA",
                 "SANTIAGO",
@@ -344,7 +346,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void viajanteProfundidadConFactoria1(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.VIAJANTE,IExplorador.PROFUNDIDAD);
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.VIAJANTE,IExplorador.PROFUNDIDAD);
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "MALAGA",
                 "SANTIAGO",
@@ -361,7 +363,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void viajanteProfundidadConFactoria2(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.VIAJANTE,IExplorador.PROFUNDIDAD, "0");
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.VIAJANTE,IExplorador.PROFUNDIDAD, "0");
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "MALAGA",
                 "SANTIAGO",
@@ -378,7 +380,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void viajanteProfundidadConFactoria3(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.VIAJANTE,IExplorador.PROFUNDIDAD, "100");
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.VIAJANTE,IExplorador.PROFUNDIDAD, "100");
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "MALAGA",
                 "SANTIAGO",
@@ -395,7 +397,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void viajanteProfundidadLimitadaConFactoria1(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.VIAJANTE,IExplorador.PROFUNDIDAD_LIMITADA, "100");
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.VIAJANTE,IExplorador.PROFUNDIDAD_LIMITADA, "100");
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "MALAGA",
                 "SANTIAGO",
@@ -412,7 +414,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void viajanteProfundidadLimitadaConFactoria2(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.VIAJANTE,IExplorador.PROFUNDIDAD_LIMITADA, "1");
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.VIAJANTE,IExplorador.PROFUNDIDAD_LIMITADA, "1");
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "MALAGA",
                 "SANTIAGO",
@@ -427,7 +429,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void viajanteProfundidadLimitadaConFactoria3(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.VIAJANTE,IExplorador.PROFUNDIDAD_LIMITADA, "2");
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.VIAJANTE,IExplorador.PROFUNDIDAD_LIMITADA, "2");
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "MALAGA",
                 "SANTIAGO",
@@ -442,7 +444,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void viajanteProfundidadLimitadaConFactoria4(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.VIAJANTE,IExplorador.PROFUNDIDAD_LIMITADA, "6");
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.VIAJANTE,IExplorador.PROFUNDIDAD_LIMITADA, "6");
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "MALAGA",
                 "SANTIAGO",
@@ -458,7 +460,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void viajanteCosteUniformeConFactoria1(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.VIAJANTE,IExplorador.COSTE_UNIFORME);
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.VIAJANTE,IExplorador.COSTE_UNIFORME);
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "MALAGA",
                 "SANTIAGO",
@@ -474,7 +476,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void viajanteCosteUniformeConFactoria2(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.VIAJANTE,IExplorador.COSTE_UNIFORME,"0");
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.VIAJANTE,IExplorador.COSTE_UNIFORME,"0");
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "MALAGA",
                 "SANTIAGO",
@@ -490,7 +492,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void viajanteCosteUniformeConFactoria3(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.VIAJANTE,IExplorador.COSTE_UNIFORME,"100");
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.VIAJANTE,IExplorador.COSTE_UNIFORME,"100");
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
                 "MALAGA",
                 "SANTIAGO",
@@ -506,7 +508,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void busquedaRescateAmplitud(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.BUSQUEDA_Y_RESCATE,IExplorador.AMPLITUD);
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.BUSQUEDA_Y_RESCATE,IExplorador.AMPLITUD);
         Coordenada inicio = new Coordenada(4,5);
         Coordenada solucion =  new Coordenada(6,7);
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
@@ -523,7 +525,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void busquedaRescateListaCoordenadasAmplitud(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.BUSQUEDA_Y_RESCATE,IExplorador.AMPLITUD);
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.BUSQUEDA_Y_RESCATE,IExplorador.AMPLITUD);
         Coordenada inicio = new Coordenada(4,5);
         Coordenada solucion1 =  new Coordenada(6,7);
         Coordenada solucion2 =  new Coordenada(10,10);
@@ -547,7 +549,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void busquedaRescateProfundidadLimitada(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.BUSQUEDA_Y_RESCATE,IExplorador.PROFUNDIDAD_LIMITADA,"4");
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.BUSQUEDA_Y_RESCATE,IExplorador.PROFUNDIDAD_LIMITADA,"4");
         Coordenada inicio = new Coordenada(4,5);
         Coordenada solucion =  new Coordenada(6,7);
         Solucion solucionPuzzle = algoritmoBusquedaNoInformada.run(
@@ -564,7 +566,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void busquedaRescateListaCoordenadasProfundidadLimitada1(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.BUSQUEDA_Y_RESCATE,IExplorador.PROFUNDIDAD_LIMITADA,"4");
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.BUSQUEDA_Y_RESCATE,IExplorador.PROFUNDIDAD_LIMITADA,"4");
         Coordenada inicio = new Coordenada(4,5);
         Coordenada solucion1 =  new Coordenada(6,7);
         Coordenada solucion2 = new Coordenada(10,10);
@@ -585,7 +587,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void busquedaRescateListaCoordenadasProfundidadLimitada2(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.BUSQUEDA_Y_RESCATE,IExplorador.PROFUNDIDAD_LIMITADA,"4");
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.BUSQUEDA_Y_RESCATE,IExplorador.PROFUNDIDAD_LIMITADA,"4");
         Coordenada inicio = new Coordenada(4,5);
         Coordenada solucion1 =  new Coordenada(6,7);
         LinkedList<Coordenada> coordenadas = new LinkedList<>();
@@ -603,7 +605,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void busquedaRescateListaCoordenadasProfundidadLimitada3(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.BUSQUEDA_Y_RESCATE,IExplorador.PROFUNDIDAD_LIMITADA,"4");
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.BUSQUEDA_Y_RESCATE,IExplorador.PROFUNDIDAD_LIMITADA,"4");
         Coordenada inicio = new Coordenada(4,5);
         Coordenada solucion1 =  new Coordenada(6,7);
         Coordenada solucion2 =  new Coordenada(10,10);
@@ -628,7 +630,7 @@ public class AlgoritmoBusquedaNoInformadaTests {
     @Test
     public void busquedaRescateListaCoordenadasVariacionInvalida(){
         AlgoritmoBusquedaNoInformada algoritmoBusquedaNoInformada = new AlgoritmoBusquedaNoInformada();
-        FactoriaExploradores factoria = new FactoriaExploradores(IProblema.BUSQUEDA_Y_RESCATE,"variacionovalida","4");
+        FactoriaExploradores factoria = new FactoriaExploradores(Problema.BUSQUEDA_Y_RESCATE,"variacionovalida","4");
         Coordenada inicio = new Coordenada(4,5);
         Coordenada solucion1 =  new Coordenada(6,7);
         Coordenada solucion2 =  new Coordenada(10,10);

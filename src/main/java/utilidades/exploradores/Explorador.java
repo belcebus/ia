@@ -9,17 +9,15 @@ public abstract class Explorador implements IExplorador{
     protected final String metodoExploracion;
     protected int limiteProfundidad;
 
-    public Explorador(String metodoExploracion) {
+    protected Explorador(String metodoExploracion) {
         this.metodoExploracion = metodoExploracion;
     }
 
-    public Explorador(String metodoExploracion, int limiteProfundidad) {
+    protected Explorador(String metodoExploracion, int limiteProfundidad) {
         this.metodoExploracion = metodoExploracion;
         this.limiteProfundidad = limiteProfundidad;
     }
 
-    @Override
-    public abstract LinkedList<Nodo> explorarFrontera(Nodo nodo);
 
     @Override
     public Nodo siguienteNodo(LinkedList<Nodo> nodosFrontera) {

@@ -1,6 +1,6 @@
 package utilidades.exploradores;
 
-import algoritmo.busqueda.noinformada.IProblema;
+import algoritmo.busqueda.noinformada.Problema;
 import utilidades.GeneradorConexiones;
 
 public class FactoriaExploradores {
@@ -24,13 +24,13 @@ public class FactoriaExploradores {
 
     public IExplorador crearExplorador(){
 
-        if(problema.equalsIgnoreCase(IProblema.PUZZLE_LINEAL)){
+        if(problema.equalsIgnoreCase(Problema.PUZZLE_LINEAL)){
             return new ExploradorLineal(variacion,limiteProfundidad);
-        }else if(problema.equalsIgnoreCase(IProblema.CONEXIONES)){
+        }else if(problema.equalsIgnoreCase(Problema.CONEXIONES)){
             return new ExploradorConexiones(variacion, GeneradorConexiones.getConexionesVuelos(),limiteProfundidad);
-        }else if(problema.equalsIgnoreCase(IProblema.VIAJANTE)){
+        }else if(problema.equalsIgnoreCase(Problema.VIAJANTE)){
             return new ExploradorConexiones(variacion, GeneradorConexiones.getConexionesViajante(),limiteProfundidad);
-        }else if(problema.equalsIgnoreCase(IProblema.BUSQUEDA_Y_RESCATE)){
+        }else if(problema.equalsIgnoreCase(Problema.BUSQUEDA_Y_RESCATE)){
             return new ExploradorBusquedaRescate(variacion,limiteProfundidad);
         }else{
             System.out.println("Variación:" + variacion + " o problema:" + problema + " no implementado");

@@ -1,9 +1,9 @@
 package run;
 
-import algoritmo.IAlgoritmo;
+import algoritmo.Algoritmo;
 import algoritmo.busqueda.IBusqueda;
 import algoritmo.busqueda.noinformada.AlgoritmoBusquedaNoInformada;
-import algoritmo.busqueda.noinformada.IProblema;
+import algoritmo.busqueda.noinformada.Problema;
 import org.apache.commons.cli.*;
 import utilidades.Coordenada;
 import utilidades.Solucion;
@@ -37,8 +37,7 @@ public class CommandLineRunner {
         //opcionales o dependientes
         commandLineOptions.addOption("l", "limite",true,
                 "limite de niveles en caso de una variación con limite de profundidad");
-        //commandLineOptions.addOption("c", "conexiones",true, "fichero de conexiones");
-
+        
         List<String> obligatorios = Arrays.asList("a","t","v","p","i","s");
         List<String> opcionales = Arrays.asList("l");
 
@@ -84,12 +83,12 @@ public class CommandLineRunner {
             }
 
             Solucion sol = null;
-            if (algoritmo.equalsIgnoreCase(IAlgoritmo.BUSQUEDA)) {
+            if (algoritmo.equalsIgnoreCase(Algoritmo.BUSQUEDA)) {
                 if (tipoAlgoritmo.equalsIgnoreCase(IBusqueda.NO_INFORMADA)) {
                     AlgoritmoBusquedaNoInformada abni = new AlgoritmoBusquedaNoInformada();
                     FactoriaExploradores factoria = new FactoriaExploradores(problema, variacionAlgoritmo,limite);
 
-                    if(problema.equalsIgnoreCase(IProblema.BUSQUEDA_Y_RESCATE)){
+                    if(problema.equalsIgnoreCase(Problema.BUSQUEDA_Y_RESCATE)){
                         //transformar la entrada en coordendadas
                         Coordenada coordenadaInicio = new Coordenada(inicio);
                         //Coordenada coordenadaSolucion = new Coordenada(solucion);
